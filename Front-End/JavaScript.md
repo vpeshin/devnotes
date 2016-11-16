@@ -20,7 +20,7 @@
 
 ## Where To
 
-JavaScript can be placed in the `<body>` and the `<head>` sections of an HTML page.\
+JavaScript can be placed in the `<body>` and the `<head>` sections of an HTML page.  
 It is a good idea to place scripts at the bottom of the `<body>` element. This can improve page load, because HTML display is not blocked by scripts loading.
 
 Scripts can also be placed in external files.
@@ -85,7 +85,7 @@ name = person.fullName();
 
 JavaScript objects cannot be compared.
 
-Though JavaScript has no classes, you can mimic many of the characteristics with its functions.\
+Though JavaScript has no classes, you can mimic many of the characteristics with its functions.  
 The new keyword allows us to create a new instance of an Object. Remember that functions are objects. In the code brlow, you can think of the function Car as a JavaScript version of a class definition.
 
 ``` javascript
@@ -145,7 +145,7 @@ var str = "Please locate where 'locate' occurs!";
 var pos = str.indexOf("locate");  
 ```
 
-The `lastIndexOf()` method returns the index of the last occurrence of a specified text in a string.\
+The `lastIndexOf()` method returns the index of the last occurrence of a specified text in a string.  
 The `search()` method searches a string for a specified value and returns the position of the match:
 
 ``` javascript
@@ -153,7 +153,7 @@ var str = "Please locate where 'locate' occurs!";
 var pos = str.search("locate");  
 ```
 
-There are 3 methods for extracting a part of a string:\
+There are 3 methods for extracting a part of a string:  
 `slice()`, `substring()`, `substr()`.
 
 `slice()` extracts a part of a string and returns the extracted part in a new string:
@@ -186,7 +186,7 @@ var text2 = "World";
 text3 = text1.concat(" ", text2);   
 ```
 
-The `charAt()` method returns the character at a specified index (position) in a string.\
+The `charAt()` method returns the character at a specified index (position) in a string.  
 The `charCodeAt()` method returns the unicode of the character at a specified index in a string.
 
 ``` javascript
@@ -195,7 +195,7 @@ str.charAt(0);            // returns H
 str.charCodeAt(0);        // returns 72   
 ```
 
-Accessing a string as an array is unsafe. If you want to read a string as an array, convert it to an array first.\
+Accessing a string as an array is unsafe. If you want to read a string as an array, convert it to an array first.  
 A string can be converted to an array with the split() method:
 
 ``` javascript
@@ -285,9 +285,9 @@ var y = x.MAX_VALUE;  // y becomes undefined
 
 ### Number Methods
 
-`toString()` returns a number as a string.\
-`toExponential()` returns a string, with a number rounded and written using exponential notation.\
-`toFixed()` returns a string, with the number written with a specified number of decimals.\
+`toString()` returns a number as a string.  
+`toExponential()` returns a string, with a number rounded and written using exponential notation.  
+`toFixed()` returns a string, with the number written with a specified number of decimals.  
 `toPrecision()` returns a string, with a number written with a specified length.
 
 ``` javascript
@@ -309,7 +309,7 @@ x.toPrecision(4);       // returns 9.656
 x.toPrecision(6);       // returns 9.65600   
 ```
 
-There are 3 JavaScript functions that can be used to convert variables to numbers:\
+There are 3 JavaScript functions that can be used to convert variables to numbers:  
 `Number()`, `parseInt()`, `parseFloat()`.
 
 `Number()`, can be used to convert JavaScript variables to numbers:
@@ -355,12 +355,12 @@ In JavaScript, all data types have a `valueOf()` and a `toString()` method.
 `Math.min()` and `Math.max()` can be used to find the lowest or highest value in a list of arguments:
 
 ``` javascript
-1.	Math.min(0, 150, 30, 20, -8, -200);      // returns -200   
-2.	Math.max(0, 150, 30, 20, -8, -200);      // returns 150   
+Math.min(0, 150, 30, 20, -8, -200);      // returns -200   
+Math.max(0, 150, 30, 20, -8, -200);      // returns 150   
 ```
 
-Math.round() rounds a number to the nearest integer.
-Math.ceil() rounds a number up to the nearest integer.
+`Math.round()` rounds a number to the nearest integer.  
+Math.ceil() rounds a number up to the nearest integer.  
 ath.floor() rounds a number down to the nearest integer.
 
 ``` javascript
@@ -395,7 +395,7 @@ Math.LOG10E     // returns base 10 logarithm of E
 
 A JavaScript date can be written as a string or a number:
 
-`Wed Oct 14 2015 17:11:07 GMT+0700` (SE Asia Standard Time)\
+`Wed Oct 14 2015 17:11:07 GMT+0700` (SE Asia Standard Time)  
 `1444817467948` (number of milliseconds since January 1, 1970, 00:00:00)
 
 Date objects are created with the new `Date()` constructor. There are 4 ways of initiating a date:
@@ -489,7 +489,7 @@ The `push()` method adds a new element to an array (at the end) and returns the 
 3.	var x = fruits.push("Peach");   //  the value of x is 6  
 ```
 
-The `shift()` method removes the first element of an array, and "shifts" all other elements one place up. It returns the string that was "shifted out"\
+The `shift()` method removes the first element of an array, and "shifts" all other elements one place up. It returns the string that was "shifted out"  
 The `unshift()` method adds a new element to an array (at the beginning), and "unshifts" older elements. It returns the new array length.
 
 ``` javascript
@@ -517,7 +517,7 @@ The `splice()` method can be used to add new items to an array or to remove item
 10.	fruits.splice(0, 1);        // Removes the first element of fruits   
 ```
 
-The `sort()` method sorts an array alphabetically.\
+The `sort()` method sorts an array alphabetically.  
 The `reverse()` method reverses the elements in an array. You can use it to sort an array in descending order.
 
 ``` javascript
@@ -557,7 +557,7 @@ The `slice()` method slices out a piece of an array into a new array:
 
 [[W3Schools 1](http://www.w3schools.com/js/js_loop_for.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_loop_while.asp)]
 
-JavaScript supports different kinds of loops:\
+JavaScript supports different kinds of loops:  
 `for`, `for/in`, `while`, `do/while`
 
 ``` javascript

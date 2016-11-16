@@ -12,7 +12,10 @@
 
 ## Line Breaks
 You can use \\ \
+or two or more spaces  
 at the end of the line to manually break a line.
+
+Empty line starts new paragraph.
 
 
 ## Links
