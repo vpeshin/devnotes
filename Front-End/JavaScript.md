@@ -184,8 +184,10 @@ Integers are considered accurate up to 15 digits.
 
 The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate:
 
-1.	var x = 0.2 + 0.1;         // x will be 0.30000000000000004  
-2.	var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3  
+``` javascript
+var x = 0.2 + 0.1;         // x will be 0.30000000000000004  
+var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3  
+```
 
 JavaScript interprets numeric constants as hexadecimal if they are preceded by 0x.
 
