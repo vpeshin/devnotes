@@ -1,4 +1,24 @@
-## 1. Where To
+<!-- TOC depthTo:2 orderedList:true -->
+
+1. [Where To](#where-to)
+2. [JavaScript Output](#javascript-output)
+3. [Data Types](#data-types)
+4. [Objects](#objects)
+5. [Scope](#scope)
+6. [Events](#events)
+7. [Strings](#strings)
+8. [Numbers](#numbers)
+9. [Math](#math)
+10. [Dates](#dates)
+11. [Arrays](#arrays)
+12. [Booleans](#booleans)
+13. [Conditional Statements](#conditional-statements)
+14. [Loops](#loops)
+
+<!-- /TOC -->
+
+
+## Where To
 
 JavaScript can be placed in the `<body>` and the `<head>` sections of an HTML page.\
 It is a good idea to place scripts at the bottom of the `<body>` element. This can improve page load, because HTML display is not blocked by scripts loading.
@@ -6,7 +26,9 @@ It is a good idea to place scripts at the bottom of the `<body>` element. This c
 Scripts can also be placed in external files.
 
 
-## 2. JavaScript Output ([1](http://www.w3schools.com/js/js_output.asp))
+## JavaScript Output
+
+[[W3Schools](http://www.w3schools.com/js/js_output.asp)]
 
 JavaScript can "display" data in different ways:
 - Writing into an alert box, using `window.alert()`
@@ -15,7 +37,9 @@ JavaScript can "display" data in different ways:
 - Writing into the browser console, using `console.log()`
 
 
-## 3. JavaScript Data Types ([1](http://www.w3schools.com/js/js_datatypes.asp))
+## Data Types
+
+[[W3Schools](http://www.w3schools.com/js/js_datatypes.asp)]
 
 `String`, `Number`, `Boolean`, `Array`, `Object`.
 
@@ -38,7 +62,9 @@ You can use the JavaScript `typeof` operator to find the type of a JavaScript va
 In JavaScript, an array is a special type of object. Therefore `typeof [1,2,3,4]` returns `"object"`
 
 
-## 4. Objects ([1](http://www.w3schools.com/js/js_objects.asp))
+## Objects
+
+[[W3Schools](http://www.w3schools.com/js/js_objects.asp)]
 
 ``` javascript
 var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};  
@@ -70,12 +96,17 @@ var Car = function() {};
 var car1 = new Car();
 ```
 
-## 5. Scope ([1](http://www.w3schools.com/js/js_scope.asp))
+
+## Scope
+
+[[W3Schools](http://www.w3schools.com/js/js_scope.asp)]
 
 local, global, automatically global
 
 
-## 6. Events ([1](http://www.w3schools.com/js/js_events.asp))
+## Events
+
+[[W3Schools](http://www.w3schools.com/js/js_events.asp)]
 
 An HTML event can be something the browser does, or something a user does.
 
@@ -92,7 +123,9 @@ It is more common to see event attributes calling functions:
 ```
 
 
-## 7. Strings ([1](http://www.w3schools.com/js/js_strings.asp)) ([2](http://www.w3schools.com/js/js_string_methods.asp))
+## Strings
+
+[[W3Schools 1](http://www.w3schools.com/js/js_strings.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_string_methods.asp)]
 
 The length of a string is found in the built in property `length`:
 
@@ -175,7 +208,9 @@ txt.split("");           // Split in characters
 ```
 
 
-## 8. Numbers ([1](http://www.w3schools.com/js/js_numbers.asp)) ([2](http://www.w3schools.com/js/js_number_methods.asp))
+## Numbers
+
+[[W3Schools 1](http://www.w3schools.com/js/js_numbers.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_number_methods.asp)]
 
 JavaScript numbers are always stored as double precision 64 bit floating point numbers.
 
@@ -230,7 +265,6 @@ isNaN(x);               // returns true because x is Not a Number
 ```
 
 ### Number Properties
-
 
 Value | Description
 - | -
@@ -314,7 +348,7 @@ parseFloat("years 10");  // returns NaN
 In JavaScript, all data types have a `valueOf()` and a `toString()` method.
 
 
-## 9. Math
+## Math
 
 `Math.random()` returns a random number between 0 (inclusive), and 1 (exclusive).
 
@@ -350,10 +384,14 @@ Math.LOG2E      // returns base 2 logarithm of E
 Math.LOG10E     // returns base 10 logarithm of E   
 ```
 
-### Math Object Methods ([1](http://www.w3schools.com/jsref/jsref_obj_math.asp))
+### Math Object Methods
+
+[[W3Schools](http://www.w3schools.com/jsref/jsref_obj_math.asp)]
 
 
-## 10. Dates ([1](http://www.w3schools.com/js/js_dates.asp)) ([2](http://www.w3schools.com/js/js_date_formats.asp)) ([3](http://www.w3schools.com/js/js_date_methods.asp))
+## Dates
+
+[[W3Schools 1](http://www.w3schools.com/js/js_dates.asp)],  [[W3Schools 2](http://www.w3schools.com/js/js_date_formats.asp)], [[W3Schools 3](http://www.w3schools.com/js/js_date_methods.asp)]
 
 A JavaScript date can be written as a string or a number:
 
@@ -370,7 +408,9 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds)
 ```
 
 
-## 11. Arrays ([1](http://www.w3schools.com/js/js_arrays.asp)) ([2](http://www.w3schools.com/js/js_array_methods.asp)) ([3](http://www.w3schools.com/js/js_array_methods.asp))
+## Arrays
+
+[[W3Schools 1](http://www.w3schools.com/js/js_arrays.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_array_methods.asp)], [[W3Schools 3](http://www.w3schools.com/js/js_array_methods.asp)]
 
 ``` javascript
 1.	var cars = ["Saab", "Volvo", "BMW"];  
@@ -382,13 +422,6 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds)
 Arrays are a special type of objects. Because of this, you can have variables of different types in the same Array.
 
 JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes. 
-
-### Array Properties
-
-``` javascript
-1.	var x = cars.length;         // The length property returns the number of elements in cars  
-2.	var y = cars.sort();         // The sort() method sort cars in alphabetical order   
-```
 
 The length property provides an easy way to append a new element to an array:
 
@@ -413,7 +446,7 @@ When to use arrays. When to use objects:
 - You should use objects when you want the element names to be strings (text).
 - You should use arrays when you want the element names to be numbers.
 
-How do I know if a variable is an array (because `typeOf` returns object)?\
+How do I know if a variable is an array (because `typeOf` returns object)?
 
 ``` javascript
 1.	function isArray(myArray) {  
@@ -509,11 +542,20 @@ The `slice()` method slices out a piece of an array into a new array:
 2.	var citrus = fruits.slice(1, 3);  
 ```
 
-## 12. Booleans ([1](http://www.w3schools.com/js/js_booleans.asp)) ([2](http://www.w3schools.com/js/js_comparisons.asp))
 
-## 13. Conditional Statements ([1](http://www.w3schools.com/js/js_if_else.asp)) ([2](http://www.w3schools.com/js/js_switch.asp))
+## Booleans
 
-## 14. Loops ([1](http://www.w3schools.com/js/js_loop_for.asp)) ([2](http://www.w3schools.com/js/js_loop_while.asp))
+[[W3Schools 1](http://www.w3schools.com/js/js_booleans.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_comparisons.asp)]
+
+
+## Conditional Statements
+
+([W3Schools 1](http://www.w3schools.com/js/js_if_else.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_switch.asp)]
+
+
+## Loops
+
+[[W3Schools 1](http://www.w3schools.com/js/js_loop_for.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_loop_while.asp)]
 
 JavaScript supports different kinds of loops:\
 `for`, `for/in`, `while`, `do/while`
