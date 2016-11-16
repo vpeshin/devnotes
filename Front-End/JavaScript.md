@@ -121,10 +121,7 @@ var pos = str.search("locate");
 ```
 
 There are 3 methods for extracting a part of a string:\
-`slice(start, end)`\
-`substring(start, end)`\
-`substr(start, length)`\
-You need only first.
+`slice()`, `substring()`, `substr()`.
 
 `slice()` extracts a part of a string and returns the extracted part in a new string:
 
@@ -136,6 +133,8 @@ var str = "Apple, Banana, Kiwi";
 var res = str.slice(-12,-6);  
 // result: Banana  
 ```
+
+Don't use `substring()` and `substr()`.
 
 The `replace()` method replaces a specified value with another value in a string. The `replace()` method can also take a regular expression as the search value.
 
@@ -191,220 +190,288 @@ var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
 
 JavaScript interprets numeric constants as hexadecimal if they are preceded by 0x.
 
-1.	var x = 0xFF;             // x will be 255   
+``` javascript
+var x = 0xFF;             // x will be 255   
+```
 
-By default, Javascript displays numbers as base 10 decimals. But you can use the toString() method to output numbers as base 16 (hex), base 8 (octal), or base 2 (binary).
+By default, Javascript displays numbers as base 10 decimals. But you can use the `toString()` method to output numbers as base 16 (hex), base 8 (octal), or base 2 (binary).
 
-1.	var myNumber = 128;  
-2.	myNumber.toString(16);     // returns 80  
-3.	myNumber.toString(8);      // returns 200  
-4.	myNumber.toString(2);      // returns 10000000  
+``` javascript
+var myNumber = 128;  
+myNumber.toString(16);     // returns 80  
+myNumber.toString(8);      // returns 200  
+myNumber.toString(2);      // returns 10000000  
+```
 
-Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number. Division by 0 (zero) also generates Infinity.
+`Infinity` (or `-Infinity`) is the value JavaScript will return if you calculate a number outside the largest possible number. Division by 0 also generates `Infinity`.
 
-1.	var myNumber = 2;  
-2.	while (myNumber != Infinity) {          // Execute until Infinity  
-3.	    myNumber = myNumber * myNumber;  
-4.	}  
-5.	  
-6.	var x =  2 / 0;          // x will be Infinity  
-7.	var y = -2 / 0;          // y will be -Infinity   
+``` javascript
+var myNumber = 2;  
+while (myNumber != Infinity) {          // Execute until Infinity  
+    myNumber = myNumber * myNumber;  
+}  
+  
+var x =  2 / 0;          // x will be Infinity  
+var y = -2 / 0;          // y will be -Infinity   
+```
 
-Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number). However, if the string contains a numeric value , the result will be a number:
+Trying to do arithmetic with a non-numeric string will result in `NaN` (Not a Number). However, if the string contains a numeric value, the result will be a number:
 
-1.	var x = 100 / "Apple";  // x will be NaN (Not a Number)  
-2.	var x = 100 / "10";     // x will be 10  
+``` javascript
+var x = 100 / "Apple";  // x will be NaN (Not a Number)  
+var x = 100 / "10";     // x will be 10  
+```
 
-You can use the global JavaScript function isNaN() to find out if a value is a number.
+You can use the global JavaScript function `isNaN()` to find out if a value is a number.
 
-1.	var x = 100 / "Apple";  
-2.	isNaN(x);               // returns true because x is Not a Number   
+``` javascript
+var x = 100 / "Apple";  
+isNaN(x);               // returns true because x is Not a Number   
+```
 
-Number Properties
+### Number Properties
 
-MAX_VALUE			Returns the largest number possible in JavaScript
-MIN_VALUE			Returns the smallest number possible in JavaScript
-NEGATIVE_INFINITY		Represents negative infinity (returned on overflow)
-NaN				Represents a "Not-a-Number" value
-POSITIVE_INFINITY		Represents infinity (returned on overflow)
 
-Number properties belongs to the JavaScript's number object wrapper called Number.
-1.	var x = Number.MAX_VALUE;  
-2.	  
-3.	var x = 6;  
-4.	var y = x.MAX_VALUE;    // y becomes undefined  
+Value | Description
+- | -
+MAX_VALUE 			| Returns the largest number possible in JavaScript
+MIN_VALUE 			| Returns the smallest number possible in JavaScript
+NEGATIVE_INFINITY 	| Represents negative infinity (returned on overflow)
+NaN 				| Represents a "Not-a-Number" value
+POSITIVE_INFINITY 	| Represents infinity (returned on overflow)
+					|
 
-Number Methods
+Number properties belongs to the JavaScript's number object wrapper called `Number`.
 
-toString() returns a number as a string.
-toExponential() returns a string, with a number rounded and written using exponential notation.
-toFixed() returns a string, with the number written with a specified number of decimals.
-toPrecision() returns a string, with a number written with a specified length
+``` javascript
+var x = Number.MAX_VALUE;  // 1.7976931348623157e+308
+var x = 6;
+var y = x.MAX_VALUE;  // y becomes undefined  
+```
 
-1.	var x = 123;  
-2.	  
-3.	x.toString();            // returns 123 from variable x  
-4.	(123).toString();        // returns 123 from literal 123  
-5.	(100 + 23).toString();   // returns 123 from expression 100 + 23   
-6.	  
-7.	x.toExponential(2);      // returns 9.66e+0  
-8.	x.toExponential(6);      // returns 9.656000e+0   
-9.	  
-10.	x.toFixed(0);           // returns 10  
-11.	x.toFixed(4);           // returns 9.6560  
-12.	x.toFixed(6);           // returns 9.656000   
-13.	  
-14.	x.toPrecision();        // returns 9.656  
-15.	x.toPrecision(4);       // returns 9.656  
-16.	x.toPrecision(6);       // returns 9.65600   
+### Number Methods
 
-There are 3 JavaScript functions that can be used to convert variables to numbers.
+`toString()` returns a number as a string.\
+`toExponential()` returns a string, with a number rounded and written using exponential notation.\
+`toFixed()` returns a string, with the number written with a specified number of decimals.\
+`toPrecision()` returns a string, with a number written with a specified length.
 
-Number(), can be used to convert JavaScript variables to numbers:
+``` javascript
+var x = 123;  
+  
+x.toString();           // returns 123 from variable x  
+(123).toString();       // returns 123 from literal 123  
+(100 + 23).toString();  // returns 123 from expression 100 + 23   
 
-1.	x = true;  
-2.	Number(x);        // returns 1  
-3.	x = false;       
-4.	Number(x);        // returns 0  
-5.	x = new Date();  
-6.	Number(x);        // returns 1404568027739  
-7.	x = "10"  
-8.	Number(x);        // returns 10  
-9.	x = "10 20"  
-10.	Number(x);        // returns NaN   
+x.toExponential(2);     // returns 9.66e+0  
+x.toExponential(6);     // returns 9.656000e+0   
+  
+x.toFixed(0);           // returns 10  
+x.toFixed(4);           // returns 9.6560  
+x.toFixed(6);           // returns 9.656000   
+  
+x.toPrecision();        // returns 9.656  
+x.toPrecision(4);       // returns 9.656  
+x.toPrecision(6);       // returns 9.65600   
+```
 
-parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned.
-parseFloat() parses a string and returns a number. Spaces are allowed. Only the first number is returned.
+There are 3 JavaScript functions that can be used to convert variables to numbers:\
+`Number()`, `parseInt()`, `parseFloat()`.
 
-1.	parseInt("10");         // returns 10  
-2.	parseInt("10.33");      // returns 10  
-3.	parseInt("10 20 30");   // returns 10  
-4.	parseInt("10 years");   // returns 10  
-5.	parseInt("years 10");   // returns NaN  
-6.	  
-7.	parseFloat("10");        // returns 10  
-8.	parseFloat("10.33");     // returns 10.33  
-9.	parseFloat("10 20 30");  // returns 10  
-10.	parseFloat("10 years");  // returns 10  
-11.	parseFloat("years 10");  // returns NaN   
+`Number()`, can be used to convert JavaScript variables to numbers:
 
-valueOf() returns a number as a number.
-The valueOf() method is used internally in JavaScript to convert Number objects to primitive values. There is no reason to use it in your code.
+``` javascript
+x = true;  
+Number(x);        // returns 1  
+x = false;       
+Number(x);        // returns 0  
+x = new Date();  
+Number(x);        // returns 1404568027739  
+x = "10"  
+Number(x);        // returns 10  
+x = "10 20"  
+Number(x);        // returns NaN   
+```
 
-In JavaScript, all data types have a valueOf() and a toString() method.
+`parseInt()` and `parseFloat()` parse a string and return a number. Spaces are allowed. Only the first number is returned.
 
-9.	Math
+``` javascript
+parseInt("10");         // returns 10  
+parseInt("10.33");      // returns 10  
+parseInt("10 20 30");   // returns 10  
+parseInt("10 years");   // returns 10  
+parseInt("years 10");   // returns NaN  
+  
+parseFloat("10");        // returns 10  
+parseFloat("10.33");     // returns 10.33  
+parseFloat("10 20 30");  // returns 10  
+parseFloat("10 years");  // returns 10  
+parseFloat("years 10");  // returns NaN   
+```
 
-Math.random() returns a random number between 0 (inclusive),  and 1 (exclusive):
+`valueOf()` returns a number as a number. The `valueOf()` method is used internally in JavaScript to convert Number objects to primitive values. There is no reason to use it in your code.
 
-1.	Math.random();       // returns a random number   
+In JavaScript, all data types have a `valueOf()` and a `toString()` method.
 
-Math.min() and Math.max() can be used to find the lowest or highest value in a list of arguments:
 
+## 9. Math
+
+`Math.random()` returns a random number between 0 (inclusive), and 1 (exclusive).
+
+`Math.min()` and `Math.max()` can be used to find the lowest or highest value in a list of arguments:
+
+``` javascript
 1.	Math.min(0, 150, 30, 20, -8, -200);      // returns -200   
 2.	Math.max(0, 150, 30, 20, -8, -200);      // returns 150   
+```
 
 Math.round() rounds a number to the nearest integer.
 Math.ceil() rounds a number up to the nearest integer.
 ath.floor() rounds a number down to the nearest integer.
 
-1.	Math.round(4.7);            // returns 5  
-2.	Math.round(4.4);            // returns 4   
-3.	Math.ceil(4.4);             // returns 5   
-4.	Math.floor(4.7);            // returns 4   
-5.	Math.floor(Math.random() * 11);   // returns a random number between 0 and 10   
+``` javascript
+Math.round(4.7);            // returns 5  
+Math.round(4.4);            // returns 4   
+Math.ceil(4.4);             // returns 5   
+Math.floor(4.7);            // returns 4   
+Math.floor(Math.random() * 11);   // returns a random number between 0 and 10   
+```
 
-Math Constants
+### Math Constants
 
-1.	Math.E          // returns Euler's number  
-2.	Math.PI         // returns PI  
-3.	Math.SQRT2      // returns the square root of 2  
-4.	Math.SQRT1_2    // returns the square root of 1/2  
-5.	Math.LN2        // returns the natural logarithm of 2  
-6.	Math.LN10       // returns the natural logarithm of 10  
-7.	Math.LOG2E      // returns base 2 logarithm of E  
-8.	Math.LOG10E     // returns base 10 logarithm of E   
+``` javascript
+Math.E          // returns Euler's number  
+Math.PI         // returns PI  
+Math.SQRT2      // returns the square root of 2  
+Math.SQRT1_2    // returns the square root of 1/2  
+Math.LN2        // returns the natural logarithm of 2  
+Math.LN10       // returns the natural logarithm of 10  
+Math.LOG2E      // returns base 2 logarithm of E  
+Math.LOG10E     // returns base 10 logarithm of E   
+```
 
-Math Object Methods
-[1](http://www.w3schools.com/jsref/jsref_obj_math.asp
+### Math Object Methods ([1](http://www.w3schools.com/jsref/jsref_obj_math.asp))
 
 
-## 10. Dates
-[1](http://www.w3schools.com/js/js_dates.asp
-[1](http://www.w3schools.com/js/js_date_formats.asp
-[1](http://www.w3schools.com/js/js_date_methods.asp
+## 10. Dates ([1](http://www.w3schools.com/js/js_dates.asp)) ([2](http://www.w3schools.com/js/js_date_formats.asp)) ([3](http://www.w3schools.com/js/js_date_methods.asp))
+
 A JavaScript date can be written as a string or a number:
-Wed Oct 14 2015 17:11:07 GMT+0700 (SE Asia Standard Time)
-1444817467948 (number of milliseconds since January 1, 1970, 00:00:00)
-Date objects are created with the new Date() constructor. There are 4 ways of initiating a date:
-1.	new Date()  
-2.	new Date(milliseconds)  
-3.	new Date(dateString)  
-4.	new Date(year, month, day, hours, minutes, seconds, milliseconds)
-11.	Arrays
-[1](http://www.w3schools.com/js/js_arrays.asp
-[1](http://www.w3schools.com/js/js_array_methods.asp
-[1](http://www.w3schools.com/js/js_array_methods.asp
+
+`Wed Oct 14 2015 17:11:07 GMT+0700` (SE Asia Standard Time)\
+`1444817467948` (number of milliseconds since January 1, 1970, 00:00:00)
+
+Date objects are created with the new `Date()` constructor. There are 4 ways of initiating a date:
+
+``` javascript
+new Date()  
+new Date(milliseconds)  
+new Date(dateString)  
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+```
+
+
+## 11. Arrays ([1](http://www.w3schools.com/js/js_arrays.asp)) ([2](http://www.w3schools.com/js/js_array_methods.asp)) ([3](http://www.w3schools.com/js/js_array_methods.asp))
+
+``` javascript
 1.	var cars = ["Saab", "Volvo", "BMW"];  
 2.	var cars = new Array("Saab", "Volvo", "BMW");  // no need to use  
 3.	var name = cars[0];  
 4.	cars[0] = "Opel";   // modifies the first element in cars  
+```
+
 Arrays are a special type of objects. Because of this, you can have variables of different types in the same Array.
+
 JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes. 
-Array Properties
+
+### Array Properties
+
+``` javascript
 1.	var x = cars.length;         // The length property returns the number of elements in cars  
 2.	var y = cars.sort();         // The sort() method sort cars in alphabetical order   
+```
+
 The length property provides an easy way to append a new element to an array:
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits[fruits.length] = "Kiwi";          // Appends "Kiwi" to fruit  
-Looping Array Elements
+```
+
+Looping array elements:
+
+``` javascript
 1.	var index;
 2.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 3.	for (index = 0; index < fruits.length; index++) {  
 4.	    text += fruits[index];  
 5.	}  
-When to Use Arrays. When to use Objects.
+```
+
+When to use arrays. When to use objects:
+
 - JavaScript does not support associative arrays.
 - You should use objects when you want the element names to be strings (text).
 - You should use arrays when you want the element names to be numbers.
-How do I know if a variable is an array (because typeOf returns object)?
-This function always returns true if the argument is an array:
+
+How do I know if a variable is an array (because `typeOf` returns object)?\
+
+``` javascript
 1.	function isArray(myArray) {  
 2.	    return myArray.constructor.toString().indexOf("Array") > -1;  
 3.	}  
-Array Methods
-The valueOf() method is the default behavior for an array. It returns an array as a string.
-For JavaScript arrays, valueOf() and toString() are equal.
+```
+
+### Array Methods
+
+The `valueOf()` method is the default behavior for an array. It returns an array as a string.
+
+For JavaScript arrays, `valueOf()` and `toString()` are equal.
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	document.getElementById("demo").innerHTML = fruits.valueOf();   
 3.	document.getElementById("demo").innerHTML = fruits.toString();  
-The join() method also joins all array elements into a string. It behaves just like toString(), but you can specify the separator:
+```
+
+The `join()` method also joins all array elements into a string. It behaves just like `toString()`, but you can specify the separator:
+
+``` javascript
 1.	var fruits = ["Banana", "Orange","Apple", "Mango"];  
 2.	document.getElementById("demo").innerHTML = fruits.join(" * ");  
-The pop() method removes the last element from an array.
-The pop() method returns the value that was "popped out".
+```
+
+The `pop()` method removes the last element from an array and returns the value that was "popped out".
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits.pop();              // Removes the last element ("Mango") from fruits  
 3.	var x = fruits.pop();      // the value of x is "Apple"  
-The push() method adds a new element to an array (at the end).
-The push() method returns the new array length.
+```
+
+The `push()` method adds a new element to an array (at the end) and returns the new array length.
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits.push("Kiwi");            //  Adds a new element ("Kiwi") to fruits  
 3.	var x = fruits.push("Peach");   //  the value of x is 6  
-The shift() method removes the first element of an array, and "shifts" all other elements one place up.
-The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements.
+```
+
+The `shift()` method removes the first element of an array, and "shifts" all other elements one place up. It returns the string that was "shifted out"\
+The `unshift()` method adds a new element to an array (at the beginning), and "unshifts" older elements. It returns the new array length.
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits.shift();            // Removes the first element "Banana" from fruits   
 3.	  
 4.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 5.	fruits.unshift("Lemon");    // Adds a new element "Lemon" to fruits   
-The shift() method returns the string that was "shifted out".
-The unshift() method returns the new array length.
-Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator delete.
-Using delete on array elements leaves undefined holes in the array. Use pop() or shift() instead.
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	delete fruits[0];           // Changes the first element in fruits to undefined  
-The splice() method can be used to add new items to an array or to remove items: 
+```
+
+Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator `delete`. Using `delete` on array elements leaves undefined holes in the array. Use pop() or shift() instead.
+
+The `splice()` method can be used to add new items to an array or to remove items: 
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits.splice(2, 0, "Lemon", "Kiwi");  
 3.	/* 
@@ -415,54 +482,69 @@ The splice() method can be used to add new items to an array or to remove items:
 8.	  
 9.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 10.	fruits.splice(0, 1);        // Removes the first element of fruits   
-The sort() method sorts an array alphabetically.
-The reverse() method reverses the elements in an array. You can use it to sort an array in descending order.
+```
+
+The `sort()` method sorts an array alphabetically.\
+The `reverse()` method reverses the elements in an array. You can use it to sort an array in descending order.
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
 2.	fruits.sort();            // Sorts the elements of fruits   
 3.	fruits.reverse();         // Reverses the order of the elements  
-The concat() method creates a new array by concatenating two arrays.
-The concat() method can take any number of array arguments.
+```
+
+The `concat()` method creates a new array by concatenating two arrays. `concat()` can take any number of array arguments.
+
+``` javascript
 1.	var arr1 = ["Cecilie", "Lone"];  
 2.	var arr2 = ["Emil", "Tobias","Linus"];  
 3.	var arr3 = ["Robin", "Morgan"];  
 4.	var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3   
-The slice() method slices out a piece of an array into a new array:
+```
+
+The `slice()` method slices out a piece of an array into a new array:
+
+``` javascript
 1.	var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];  
 2.	var citrus = fruits.slice(1, 3);  
-12.	Booleans 
-[1](http://www.w3schools.com/js/js_booleans.asp
-[1](http://www.w3schools.com/js/js_comparisons.asp
-13.	Conditional Statements
-[1](http://www.w3schools.com/js/js_if_else.asp
-[1](http://www.w3schools.com/js/js_switch.asp
-14.	Loops
-[1](http://www.w3schools.com/js/js_loop_for.asp
-[1](http://www.w3schools.com/js/js_loop_while.asp
-JavaScript supports different kinds of loops:
-for - loops through a block of code a number of times
-for/in - loops through the properties of an object
-while - loops through a block of code while a specified condition is true
-do/while - also loops through a block of code while a specified condition is true
-1.	for (i = 0; i < 5; i++) {  
-2.	     text += "The number is " + i + "<br>";  
-3.	}  
+```
 
-1.	var person = {fname:"John", lname:"Doe", age:25};   
-2.	  
-3.	var text = "";  
-4.	var x;  
-5.	for (x in person) {  
-6.	     text += person[x];  
-7.	}  
+## 12. Booleans ([1](http://www.w3schools.com/js/js_booleans.asp)) ([2](http://www.w3schools.com/js/js_comparisons.asp))
 
-1.	while (i < 10) {  
-2.	     text += "The number is " + i;  
-3.	     i++;  
-4.	}  
+## 13. Conditional Statements ([1](http://www.w3schools.com/js/js_if_else.asp)) ([2](http://www.w3schools.com/js/js_switch.asp))
 
-1.	do {  
-2.	     text += "The number is " + i;  
-3.	     i++;  
-4.	}  
-5.	while (i < 10);  
+## 14. Loops ([1](http://www.w3schools.com/js/js_loop_for.asp)) ([2](http://www.w3schools.com/js/js_loop_while.asp))
 
+JavaScript supports different kinds of loops:\
+`for`, `for/in`, `while`, `do/while`
+
+``` javascript
+for (i = 0; i < 5; i++) {  
+     text += "The number is " + i + "<br>";  
+}  
+```
+
+``` javascript
+var person = {fname:"John", lname:"Doe", age:25};   
+  
+var text = "";  
+var x;  
+for (x in person) {  
+     text += person[x];  
+}  
+```
+
+``` javascript
+while (i < 10) {  
+     text += "The number is " + i;  
+     i++;  
+}  
+```
+
+``` javascript
+do {  
+     text += "The number is " + i;  
+     i++;  
+}  
+while (i < 10);  
+```
