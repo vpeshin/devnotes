@@ -30,7 +30,7 @@
 28. [Flexible Box](#flexible-box)
 29. [Media Queries](#media-queries)
 30. [Common Responsive Patterns](#common-responsive-patterns)
-31. [Responsive tables](#responsive-tables)
+31. [Responsive Tables](#responsive-tables)
 32. [Responsive Images](#responsive-images)
 33. [Other](#other)
 
@@ -1304,7 +1304,7 @@ menu.addEventListener('click', function(e) {
 ```
 
 
-## Responsive tables
+## Responsive Tables
 
 [[CSS-Tricks](https://css-tricks.com/responsive-data-table-roundup/)]
 
