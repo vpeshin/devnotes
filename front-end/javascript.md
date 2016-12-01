@@ -4,16 +4,17 @@
 2. [JavaScript Output](#javascript-output)
 3. [Data Types](#data-types)
 4. [Objects](#objects)
-5. [Scope](#scope)
-6. [Events](#events)
-7. [Strings](#strings)
-8. [Numbers](#numbers)
-9. [Math](#math)
-10. [Dates](#dates)
-11. [Arrays](#arrays)
-12. [Booleans](#booleans)
-13. [Conditional Statements](#conditional-statements)
-14. [Loops](#loops)
+5. [Functions](#functions)
+6. [Scope](#scope)
+7. [Events](#events)
+8. [Strings](#strings)
+9. [Numbers](#numbers)
+10. [Math](#math)
+11. [Dates](#dates)
+12. [Arrays](#arrays)
+13. [Booleans](#booleans)
+14. [Conditional Statements](#conditional-statements)
+15. [Loops](#loops)
 
 <!-- /TOC -->
 
@@ -97,6 +98,23 @@ var car1 = new Car();
 ```
 
 
+## Functions
+
+Functions can be defined with two different syntaxes:
+
+``` javascript
+var myFunc = function(param1, param2, ...) {
+    // code goes here
+}
+```
+
+``` javascript
+function myFunc(param1, param2, ...) {
+    // code goes here
+}
+```
+
+
 ## Scope
 
 [[W3Schools](http://www.w3schools.com/js/js_scope.asp)]
@@ -125,7 +143,8 @@ It is more common to see event attributes calling functions:
 
 ## Strings
 
-[[W3Schools 1](http://www.w3schools.com/js/js_strings.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_string_methods.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_strings.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_string_methods.asp)]
 
 The length of a string is found in the built in property `length`:
 
@@ -210,7 +229,8 @@ txt.split("");           // Split in characters
 
 ## Numbers
 
-[[W3Schools 1](http://www.w3schools.com/js/js_numbers.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_number_methods.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_numbers.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_number_methods.asp)]
 
 JavaScript numbers are always stored as double precision 64 bit floating point numbers.
 
@@ -391,7 +411,9 @@ Math.LOG10E     // returns base 10 logarithm of E
 
 ## Dates
 
-[[W3Schools 1](http://www.w3schools.com/js/js_dates.asp)],  [[W3Schools 2](http://www.w3schools.com/js/js_date_formats.asp)], [[W3Schools 3](http://www.w3schools.com/js/js_date_methods.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_dates.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_date_formats.asp)],
+[[W3Schools 3](http://www.w3schools.com/js/js_date_methods.asp)]
 
 A JavaScript date can be written as a string or a number:
 
@@ -410,7 +432,9 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
 ## Arrays
 
-[[W3Schools 1](http://www.w3schools.com/js/js_arrays.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_array_methods.asp)], [[W3Schools 3](http://www.w3schools.com/js/js_array_methods.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_arrays.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_array_methods.asp)],
+[[W3Schools 3](http://www.w3schools.com/js/js_array_methods.asp)]
 
 ``` javascript
 1.	var cars = ["Saab", "Volvo", "BMW"];  
@@ -545,20 +569,25 @@ The `slice()` method slices out a piece of an array into a new array:
 
 ## Booleans
 
-[[W3Schools 1](http://www.w3schools.com/js/js_booleans.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_comparisons.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_booleans.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_comparisons.asp)]
 
 
 ## Conditional Statements
 
-([W3Schools 1](http://www.w3schools.com/js/js_if_else.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_switch.asp)]
+([W3Schools 1](http://www.w3schools.com/js/js_if_else.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_switch.asp)]
+
+Use `===` for comparison.
 
 
 ## Loops
 
-[[W3Schools 1](http://www.w3schools.com/js/js_loop_for.asp)], [[W3Schools 2](http://www.w3schools.com/js/js_loop_while.asp)]
+[[W3Schools 1](http://www.w3schools.com/js/js_loop_for.asp)],
+[[W3Schools 2](http://www.w3schools.com/js/js_loop_while.asp)]
 
 JavaScript supports different kinds of loops:  
-`for`, `for/in`, `while`, `do/while`
+`for`, `for-in`, `while`, `do/while`
 
 ``` javascript
 for (i = 0; i < 5; i++) {  
@@ -566,14 +595,17 @@ for (i = 0; i < 5; i++) {
 }  
 ```
 
+`for-in` loops are considered to be general bad practice when writing JavaScript because it has some inconsistent behavior with arrays and objects.
+
 ``` javascript
 var person = {fname:"John", lname:"Doe", age:25};   
   
 var text = "";  
-var x;  
-for (x in person) {  
+var x;
+
+for (x in person) {      // item x in object person
      text += person[x];  
-}  
+}    // => JohnDoe25
 ```
 
 ``` javascript
