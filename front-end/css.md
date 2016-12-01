@@ -39,7 +39,7 @@
 
 ## Colors
 
-[[W3Schools]([[W3Schools](http://www.w3schools.com/css/css3_colors.asp)]
+[[W3Schools](http://www.w3schools.com/css/css3_colors.asp)]
 
 Colors can be applied by using color (for text) and background-color (for anything).
 
