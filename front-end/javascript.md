@@ -566,6 +566,13 @@ The `slice()` method slices out a piece of an array into a new array:
 2.	var citrus = fruits.slice(1, 3);  
 ```
 
+You can go through every element of array using `forEach()` (instead of `for` loop):
+
+``` javascript
+var pets = ["Dog", "Cat", "Rabbit"];
+pets.forEach(alert);
+```
+
 
 ## Booleans
 

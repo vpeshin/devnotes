@@ -183,7 +183,18 @@ This would apply “alternative” to the last two columns:
 			<option value="rus">Russia</option>  
 			<option value="uk">UK</option>  
 		</optgroup>  
-	</select>  
+	</select>
+	<!-- Field sets -->
+	<fieldset>
+        <legend>Name</legend>
+        <p>First name <input name="firstName"></p>
+        <p>Last name <input name="lastName"></p>
+    </fieldset>
+    <fieldset>
+        <legend>Address</legend>
+        <p>Address <textarea name="address"></textarea></p>
+        <p>Postal code <input name="postcode"></p>
+    </fieldset>
 </form>
 ```
 
@@ -228,8 +239,9 @@ The `placeholder` attribute can be used with text input fields (and their text-l
 <!-- You might want focus to land on a form field when a page loads. -->  
 ```
 
-``` html
 A data list takes the form of a list of suggestions that accompanies a text field:
+
+``` html
 <input name="country" list="country_name">  
 <datalist id="country_name">  
 	<option value="Afghanistan">  
@@ -239,6 +251,13 @@ A data list takes the form of a list of suggestions that accompanies a text fiel
 	<!-- etc. -->  
 </datalist>
 ```
+
+### Handling File Upload
+<form action="destination" method="post" enctype="miltipart/form-data">
+	...
+	<input type="file" name="fileToUpload">
+	<input type="submit" value="Submit the file">
+</form>
 
 
 ## Iframes
@@ -459,3 +478,15 @@ The `object` element defines an embedded object within an HTML document.
 ``` html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
+
+
+### Presentational Tags in HTML
+
+Try not to use `i`, `b`, `u`, `s`, `small`, `sub`, and `sup`.  
+In almost every single situation, `strong` or `em` will be 
+significantly more appropriate and, additionally, they will 
+be interpreted by assistive technologies more accurately.
+
+Use CSS property `vertical-align` instead of `sub` and `sup`.  
+Use `font-style` for italics, `font-weight` for bold text, `text-decoration`
+for underlined text and strikethrough, `font-size` for small text.
