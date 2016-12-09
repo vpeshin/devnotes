@@ -15,6 +15,7 @@
 13. [Booleans](#booleans)
 14. [Conditional Statements](#conditional-statements)
 15. [Loops](#loops)
+16. [The DOM (Document Object Model)](#the-dom-document-object-model)
 
 <!-- /TOC -->
 
@@ -126,6 +127,14 @@ local, global, automatically global
 
 [[W3Schools](http://www.w3schools.com/js/js_events.asp)]
 
+`onclick`  
+`onchange`  
+`onmouseover`  
+`onmouseout`  
+`onkeydown`  
+`onload`  
+etc.
+
 An HTML event can be something the browser does, or something a user does.
 
 In this example, the code changes the content of its own element (using `this.innerHTML`):
@@ -140,6 +149,18 @@ It is more common to see event attributes calling functions:
 <button onclick="displayDate()">The time is?</button>  
 ```
 
+Adding event handler using javascript:
+
+``` html
+<html><body>
+    <script>
+        function do_something() {
+            alert("Page has loaded")
+        }
+        window.addEventListener("load", do_something);
+    </script>
+</body></html>
+```
 
 ## Strings
 
@@ -629,3 +650,160 @@ do {
 }  
 while (i < 10);  
 ```
+
+
+## The DOM (Document Object Model)
+
+### Node Relationships
+
+`firstChild`  
+`lastChild`  
+`childNodes[0]`  
+`parentNode`  
+`nextSibling`  
+`previousSibling`
+
+This function shows path to a clicked node:
+
+``` javascript
+function handleClick(event) {
+    event.stopPropagation();
+
+    var node = event.target;
+    var thisPath = node.nodeName;
+
+    while (node.parentNode) {
+        node = node.parentNode;
+        thisPath = node.nodeName + " > " + thisPath;
+    }
+
+    alert(thisPath);
+}
+```
+
+### Locating Nodes
+
+- Using full path to the node
+- `getElementsByTagName()`
+- `getElementById`
+
+``` html
+<body>
+<h2 style="color:black" id="cute_text">
+	Click on a button to change a colour
+</h2>
+
+<form>
+<input onclick="change_color1()" type="button"
+	value="Change using method 1">
+<input onclick="change_color2()" type="button"
+	value="Change using method 2">
+<input onclick="change_color3()" type="button"
+	value="Change using method 3">
+</form>
+
+</body>
+```
+
+``` javascript
+function change_color1(){
+	document.childNodes[0].childNodes[2].childNodes[1].style.color="red";
+}
+
+function change_color2(){
+	document.getElementsByTagName("h2")[0].style.color="yellow";
+}
+
+function change_color3(){
+	document.getElementById("cute_text").style.color="blue";
+}
+```
+
+Another way to change something after you've located it is `setAttribute()`.
+
+``` javascript
+the_node=getElementById("thisNode");
+the_node.setAttribute("style", "color:red");
+```
+
+### Creating and Adding Nodes
+
+Creating nodes:  
+`createElement()`  
+`createTextNode()`
+
+Adding nodes:  
+`insertBefore()`  
+`appendChild()`
+
+``` html
+<body onclick="insert_new_text()">
+<h1 id="my_text">Please click on the page</h1>
+```
+
+``` javascript
+function insert_new_text() {
+	var newHR = document.createElement("hr");
+	var destParent = document.getElementsByTagName("body")[0];
+	destParent.insertBefore(newHR, destParent.firstChild);
+
+	var newText = document.createTextNode("This is dynamically added Text!");
+	var textPart = document.getElementById("my_text");
+	textPart.appendChild(result);
+}
+```
+
+### Deleting Nodes
+
+`removeChild`
+
+``` html
+<body id="the_body"><p id="firstP">Hello.</p>
+<p id="secondP">It's a nice day!</p>
+<button type="button" onclick="delete1()">Example 1</button>
+<button type="button" onclick="delete2()">Example 2</button>
+<button type="button" onclick="delete3()">Example 3</button>
+<button type="button" onclick="deleteAllChildren()">Example 4</button>
+```
+
+``` javascript
+function delete1() {
+    var the_node = document.getElementById("firstP");
+    the_node.parentNode.removeChild(the_node);
+}
+
+function delete2() {
+    var the_node = document.getElementByTagName("p")[0];
+    the_node.parentNode.removeChild(the_node);
+}
+
+function delete3() {
+    var the_parent = document.getElementById("theBody");
+    the_parent.removeChild(the_parent.firstChild);
+}
+
+function deleteAllChildren() {
+    var the_node = document.getElementById("theBody");
+
+    while (the_node.firstChild) // While there is a child
+        the_node.removeChild(the_node.firstChild);
+}
+```
+
+### Cloning Nodes
+
+``` html
+<ul id="myList"><li>Good Morning></li><li>Hello</li></ul>
+<p>Click on the button to cloneNode(true)</p>
+<button onclick="myFunction()">Copy it!"</button>
+</body>
+```
+
+``` javascript
+function myFunction() {
+    var the_node = document.getElementById("myList").lastChild;
+    var the_clone = the_node.cloneNode(true);
+    document.getElementById("myList").appendChild(the_clone);
+}
+```
+

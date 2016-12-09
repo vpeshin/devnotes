@@ -68,26 +68,26 @@ definition lists – `dl`, `dt` (any number of either)
 
 ``` html
 <table>  
-	<caption>Locust mating habits</caption>  
-	<tr>  
-		<th>Column 1 heading</th>  
-		<th>Column 2 heading</th>  
-		<th>Column 3 heading</th>  
-	</tr>  
-	<tr>  
-		<td>Row 2, cell 1</td>  
-		<td colspan="2">Row 2, cell 2, also spanning Row 2, cell 3</td>  
-	</tr>  
-	<tr>  
-		<td rowspan="2">Row 3, cell 1, also spanning Row 4, cell 1</td>  
-		<td>Row 3, cell 2</td>  
-		<td>Row 3, cell 3</td>  
-	</tr>  
-	<tr>  
-			<td>Row 4, cell 2</td>  
-			<td>Row 4, cell 3</td>  
-		</tr>  
-	</table>
+    <caption>Locust mating habits</caption>  
+    <tr>  
+        <th>Column 1 heading</th>  
+        <th>Column 2 heading</th>  
+        <th>Column 3 heading</th>  
+    </tr>  
+    <tr>  
+        <td>Row 2, cell 1</td>  
+        <td colspan="2">Row 2, cell 2, also spanning Row 2, cell 3</td>  
+    </tr>  
+    <tr>  
+        <td rowspan="2">Row 3, cell 1, also spanning Row 4, cell 1</td>  
+        <td>Row 3, cell 2</td>  
+        <td>Row 3, cell 3</td>  
+    </tr>  
+    <tr>  
+            <td>Row 4, cell 2</td>  
+            <td>Row 4, cell 3</td>  
+        </tr>  
+    </table>
 // To add borders, use the CSS border property:
 // 	table, th, td {  
 // 	     border: 1px solid black;  
@@ -100,19 +100,19 @@ Colgroup and col tags allow you to define the table columns and style them as de
 ``` html
 <table>  
    <colgroup>  
-	   <col>  
-	   <col class="alternative">  
-	   <col>  
+       <col>  
+       <col class="alternative">  
+       <col>  
    </colgroup>  
    <tr>  
-	   <td>This</td>  
-	   <td>That</td>  
-	   <td>The other</td>  
+       <td>This</td>  
+       <td>That</td>  
+       <td>The other</td>  
    </tr>  
    <tr>  
-	   <td>Ladybird</td>  
-	   <td>Locust</td>  
-	   <td>Lunch</td>  
+       <td>Ladybird</td>  
+       <td>Locust</td>  
+       <td>Lunch</td>  
    </tr>  
 </table>  
 ```
@@ -130,25 +130,25 @@ This would apply “alternative” to the last two columns:
 
 ``` html
 <table>  
-	<thead>  
-		<tr>  
-			<td>Header 1</td>  
-			<td>Header 2</td>  
-		</tr>  
-	</thead>  
-	<tfoot>  
-		<tr>  
-			<td>Footer 1</td>  
-			<td>Footer 2</td>  
-		</tr>  
-	</tfoot>  
-	<tbody>  
-		<tr>  
-			<td>Cell 1</td>  
-			<td>Cell 2</td>  
-		</tr>  
-		<!-- etc. -->  
-	</tbody>  
+    <thead>  
+        <tr>  
+            <td>Header 1</td>  
+            <td>Header 2</td>  
+        </tr>  
+    </thead>  
+    <tfoot>  
+        <tr>  
+            <td>Footer 1</td>  
+            <td>Footer 2</td>  
+        </tr>  
+    </tfoot>  
+    <tbody>  
+        <tr>  
+            <td>Cell 1</td>  
+            <td>Cell 2</td>  
+        </tr>  
+        <!-- etc. -->  
+    </tbody>  
 </table>
 ```
 
@@ -158,34 +158,34 @@ This would apply “alternative” to the last two columns:
 
 ``` html
 <form action="processingscript.php" method="post">  <!-- method="get" -->  
-	<input type="text" name="firstname" value="Byron">  
-	<input type="password" name="password">  
-	<input type="radio" name="gender" value="male"> Male  
-	<input type="radio" name="gender" value="female"> Female  
-	<input type="checkbox" checked name="areyousheep">  
-	<textarea name="comments" rows="7" cols="60">Some text
-	<input type="reset" name="resetform" value="Reset Form">  
-	<input type="submit" name="submitform" value="Submit Form">  
-	<select>  
-		<option>NSW</option>  
-		<option selected>NY</option>  
-		<option value="third option">Option 3</option>  
-	</select>  
-	<!-- Option groups -->  
-	<select name="country">  
-		<optgroup label="Africa">  
-			<option value="gam">Gambia</option>  
-			<option value="mad">Madagascar</option>  
-			<option value="nam">Namibia</option>  
-		</optgroup>  
-		<optgroup label="Europe">  
-			<option value="fra">France</option>  
-			<option value="rus">Russia</option>  
-			<option value="uk">UK</option>  
-		</optgroup>  
-	</select>
-	<!-- Field sets -->
-	<fieldset>
+    <input type="text" name="firstname" value="Byron">  
+    <input type="password" name="password">  
+    <input type="radio" name="gender" value="male"> Male  
+    <input type="radio" name="gender" value="female"> Female  
+    <input type="checkbox" checked name="areyousheep">  
+    <textarea name="comments" rows="7" cols="60">Some text
+    <input type="reset" name="resetform" value="Reset Form">  
+    <input type="submit" name="submitform" value="Submit Form">  
+    <select>  
+        <option>NSW</option>  
+        <option selected>NY</option>  
+        <option value="third option">Option 3</option>  
+    </select>  
+    <!-- Option groups -->  
+    <select name="country">  
+        <optgroup label="Africa">  
+            <option value="gam">Gambia</option>  
+            <option value="mad">Madagascar</option>  
+            <option value="nam">Namibia</option>  
+        </optgroup>  
+        <optgroup label="Europe">  
+            <option value="fra">France</option>  
+            <option value="rus">Russia</option>  
+            <option value="uk">UK</option>  
+        </optgroup>  
+    </select>
+    <!-- Field sets -->
+    <fieldset>
         <legend>Name</legend>
         <p>First name <input name="firstName"></p>
         <p>Last name <input name="lastName"></p>
@@ -244,19 +244,19 @@ A data list takes the form of a list of suggestions that accompanies a text fiel
 ``` html
 <input name="country" list="country_name">  
 <datalist id="country_name">  
-	<option value="Afghanistan">  
-	<option value="Albania">  
-	<option value="Algeria">  
-	<option value="Andorra">  
-	<!-- etc. -->  
+    <option value="Afghanistan">  
+    <option value="Albania">  
+    <option value="Algeria">  
+    <option value="Andorra">  
+    <!-- etc. -->  
 </datalist>
 ```
 
 ### Handling File Upload
 <form action="destination" method="post" enctype="miltipart/form-data">
-	...
-	<input type="file" name="fileToUpload">
-	<input type="submit" value="Submit the file">
+    ...
+    <input type="file" name="fileToUpload">
+    <input type="submit" value="Submit the file">
 </form>
 
 
@@ -472,7 +472,7 @@ The `object` element defines an embedded object within an HTML document.
 
 
 ## Other
-		
+        
 ### Setting the Viewport
 
 ``` html

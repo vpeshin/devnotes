@@ -230,7 +230,7 @@ Pseudo classes are bolted on to selectors to specify a state or relation to the 
 
 ``` css
 a:visited {  
-	color: purple;  
+    color: purple;  
 }  
   
 link  /*unvisited link*/  
@@ -244,8 +244,8 @@ last-child
 target  
 first-of-type  
 /*Note the difference: 
-	p:nth-child(3) 
-	p :nth-child(3)
+    p:nth-child(3) 
+    p :nth-child(3)
 */
 ```
 
@@ -980,9 +980,9 @@ margins collapse with the margins of its contents.
 
 ``` css
 .container {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 ```
 
@@ -990,10 +990,10 @@ Change order of elements using flexbox:
 
 ``` css
 @media screen and (min-width: 700px) {
-	.blue { order: 4; }
-	.green { order: 2; }
-	.orange { order: 3; }
-	.red { order: 1; }
+    .blue { order: 4; }
+    .green { order: 2; }
+    .orange { order: 3; }
+    .red { order: 1; }
 }
 ```
 
@@ -1003,10 +1003,10 @@ should include. Should they include the `border-box`? Or just the `content-box`
 
 ``` css
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: content-box|border-box|initial|inherit;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: content-box|border-box|initial|inherit;
 }
 ```
 
@@ -1014,7 +1014,7 @@ Add this to main css:
 
 ``` css
 img, embed, object, video {
-	max-width: 100%;
+    max-width: 100%;
 }
 ```
 
@@ -1075,7 +1075,7 @@ over500.css:
 
 ``` css
 body {
-	background-color: blue;
+    background-color: blue;
 }
 ```
 
@@ -1083,7 +1083,7 @@ Embedding media query with an `@media` tag:
 
 ``` css
 @media screen and (min-width:500px) and (max-width: 800px) {
-	body { background-color: green; }
+    body { background-color: green; }
 }
 ```
 
@@ -1091,18 +1091,18 @@ You can apply more than one `@media` rule, so you could have a number of differe
 
 ``` css
 @media screen and (max-width: 1000px) {
-	#content { width: 100% }
+    #content { width: 100% }
 }
 
 @media screen and (max-width: 800px) {
-	#nav { float: none }
+    #nav { float: none }
 }
 
 @media screen and (max-width: 600px) {
-	#content aside {
-		float: none;
-		display: block;
-	}
+    #content aside {
+        float: none;
+        display: block;
+    }
 }
 ```
 
@@ -1110,11 +1110,11 @@ Orientation-specific CSS:
 
 ``` css
 @media screen and (orientation: landscape) {
-	#nav { float: left }
+    #nav { float: left }
 }
 
 @media screen and (orientation: portrait) {
-	#nav { float: none }
+    #nav { float: none }
 }
 ```
 
@@ -1127,38 +1127,38 @@ Using `min-device-width` and `max-device-width` is strongly discouraged.
 
 ``` html
 <div class="container">
-	<div class="box blue"></div>
-	<div class="box red"></div>
-	<div class="box green"></div>
+    <div class="box blue"></div>
+    <div class="box red"></div>
+    <div class="box green"></div>
 </div>
 ```
 
 ``` css
 .container {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
-	width: 100%;
+    width: 100%;
 }
 
 @media screen and (min-width: 450px) {
-	.blue {
-		width: 25%;
-	}
-	.red {
-		width: 75%;
-	}
+    .blue {
+        width: 25%;
+    }
+    .red {
+        width: 75%;
+    }
 }
 
 @media screen and (min-width: 550px) {
-	.blue, .green {
-		width: 25%;
-	}
-	.red {
-		width: 50%;
-	}
+    .blue, .green {
+        width: 25%;
+    }
+    .red {
+        width: 50%;
+    }
 }
 ```
 
@@ -1166,45 +1166,45 @@ Using `min-device-width` and `max-device-width` is strongly discouraged.
 
 ``` html
 <div class="container">
-	<div class="box dark_blue"></div>
-	<div class="box light_blue"></div>
-	<div class="box green"></div>
-	<div class="box red"></div>
-	<div class="box orange"></div>
+    <div class="box dark_blue"></div>
+    <div class="box light_blue"></div>
+    <div class="box green"></div>
+    <div class="box red"></div>
+    <div class="box orange"></div>
 </div>
 ```
 
 ``` css
 .container {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
-	width: 100%;
+    width: 100%;
 }
 
 @media screen and (min-width: 450px) {
-	.light_blue, .greeen {
-		width: 50%;
-	}
+    .light_blue, .greeen {
+        width: 50%;
+    }
 }
 
 @media screen and (min-width: 550px) {
-	.dark_blue, .light_blue {
-		width: 50%;
-	}
-	.green, .red, .orange {
-		width: 33.333333%;
-	}
+    .dark_blue, .light_blue {
+        width: 50%;
+    }
+    .green, .red, .orange {
+        width: 33.333333%;
+    }
 }
 
 @media screen and (min-width: 700px) {
-	.container {
-		width: 700px;
-		margin-left: auto;
-		margin-right: auto;
-	}
+    .container {
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 ```
 
@@ -1212,47 +1212,47 @@ Using `min-device-width` and `max-device-width` is strongly discouraged.
 
 ``` html
 <div class="container">
-	<div class="box dark_blue"></div>
-	<div class="container" id="container2">
-		<div class="box light_blue"></div>
-		<div class="box green"></div>
-	</div>
-	<div class="box red"></div>
+    <div class="box dark_blue"></div>
+    <div class="container" id="container2">
+        <div class="box light_blue"></div>
+        <div class="box green"></div>
+    </div>
+    <div class="box red"></div>
 </div>
 ```
 
 ``` css
 .container {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
-	width: 100%;
+    width: 100%;
 }
 
 @media screen and (min-width: 500px) {
-	.dark_blue {
-		width: 500px;
-	}
-	#container2 {
-		width: 50%;
-	}
+    .dark_blue {
+        width: 500px;
+    }
+    #container2 {
+        width: 50%;
+    }
 }
 
 @media screen and (min-width: 600px) {
-	.dark_blue {
-		width: 25%;
-		order: 1;
-	}
-	#container2 {
-		width: 50%;
-	}
-	.red {
-		width: 25%;
-		order: -1;
-	}
+    .dark_blue {
+        width: 25%;
+        order: 1;
+    }
+    #container2 {
+        width: 50%;
+    }
+    .red {
+        width: 25%;
+        order: -1;
+    }
 }
 ```
 
@@ -1268,38 +1268,38 @@ when screen is large enough. On smaller screen off canvas content is typically s
 
 ``` css
 html, body, main {
-	height: 100%;
-	width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 nav {
-	width: 300px;
-	height: 100%;
-	position: absolute;
-	transform: translate(-300px, 0);
-	transition: transform 0.3s ease;
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    transform: translate(-300px, 0);
+    transition: transform 0.3s ease;
 }
 
 @media screen and (min-width: 600px) {
-	nav {
-		position: relative;
-		transform: translate(0, 0);
-	}
-	body {
-		display: flex;
-		flex-flow: row nowrap;
-	}
-	main {
-		width: auto;
-		flex-grow: 1;
-	}
+    nav {
+        position: relative;
+        transform: translate(0, 0);
+    }
+    body {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    main {
+        width: auto;
+        flex-grow: 1;
+    }
 }
 ```
 
 ``` javascript
 menu.addEventListener('click', function(e) {
-	drawer.classList.toggle('open');
-	e.stopPropagation();
+    drawer.classList.toggle('open');
+    e.stopPropagation();
 });
 ```
 
@@ -1314,34 +1314,34 @@ Use it with caution. If possible, use abbreviated data instead of hiding it comp
 
 ``` html
 <tr>
-	<td>
-		<span class="shortName">TOR</span>
-		<span class="longName">Toronto Blue Jays</span>
-	</td>
-	<td class="inning">0</td>
-	<td class="inning">0</td>
-	<td class="inning">0</td>
-	<td class="inning">4</td>
-	<td class="inning">0</td>
-	<td class="inning">1</td>
-	<td class="inning">0</td>
-	<td class="inning">0</td>
-	<td class="inning">0</td>
-	<td class="final">5</td>
+    <td>
+        <span class="shortName">TOR</span>
+        <span class="longName">Toronto Blue Jays</span>
+    </td>
+    <td class="inning">0</td>
+    <td class="inning">0</td>
+    <td class="inning">0</td>
+    <td class="inning">4</td>
+    <td class="inning">0</td>
+    <td class="inning">1</td>
+    <td class="inning">0</td>
+    <td class="inning">0</td>
+    <td class="inning">0</td>
+    <td class="final">5</td>
 </tr>
 ```
 
 ``` css
 body {
-	margin: 1em;
+    margin: 1em;
 }
 
 .longName {
-	display: none;
+    display: none;
 }
 
 .inning {
-	display: none;
+    display: none;
 }
 ```
 
@@ -1351,49 +1351,49 @@ Table is collapsed and resembles a long list, as opposed to a table data.
 
 ``` html
 <table>
-	<thead>...</thead>
-	<tbody>
-		<tr>
-			<td data-th="Team">...</td>
-			<td data-th="1st">...</td>
-			<td data-th="2nd">...</td>
-			<td data-th="3rd">...</td>
-			<td data-th="4th">...</td>
-			<td data-th="5th">...</td>
-			<td data-th="6th">...</td>
-			<td data-th="7th">...</td>
-			<td data-th="8th">...</td>
-			<td data-th="9th">...</td>
-			<td data-th="Final">...</td>
-		</tr>
-	</tbody>
+    <thead>...</thead>
+    <tbody>
+        <tr>
+            <td data-th="Team">...</td>
+            <td data-th="1st">...</td>
+            <td data-th="2nd">...</td>
+            <td data-th="3rd">...</td>
+            <td data-th="4th">...</td>
+            <td data-th="5th">...</td>
+            <td data-th="6th">...</td>
+            <td data-th="7th">...</td>
+            <td data-th="8th">...</td>
+            <td data-th="9th">...</td>
+            <td data-th="Final">...</td>
+        </tr>
+    </tbody>
 </table>
 ```
 
 ``` css
 @media screen and (max-width: 500px) {
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-	/*Hide table header*/
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	/*Make room for header*/
-	td {
-		position: relative;
-		padding-left: 50%;
-	}
-	/*Add row labels*/
-	td:before {
-		position: absolute;
-		left: 6px;
-		/*Label for row*/
-		content: attr(data-th);
-		font-weight: bold;
-	}	
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    /*Hide table header*/
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    /*Make room for header*/
+    td {
+        position: relative;
+        padding-left: 50%;
+    }
+    /*Add row labels*/
+    td:before {
+        position: absolute;
+        left: 6px;
+        /*Label for row*/
+        content: attr(data-th);
+        font-weight: bold;
+    }	
 }
 ```
 
@@ -1403,14 +1403,14 @@ Make table scrollable.
 
 ``` html
 <div class="contained_table">
-	<table>...</table>
+    <table>...</table>
 </div>
 ```
 
 ``` css
 div.contained_table {
-	width: 100%;
-	overflow-x: auto;
+    width: 100%;
+    overflow-x: auto;
 }
 ```
 
@@ -1422,13 +1422,13 @@ for everything else.
 
 ``` css
 img {
-	max-width: 426px;
-	margin-right: 10px;
-	width: calc((100% - 10px) / 2);
+    max-width: 426px;
+    margin-right: 10px;
+    width: calc((100% - 10px) / 2);
 }
 
 img::last-of-type {
-	margin-right: 0;
+    margin-right: 0;
 }
 ```
 
@@ -1455,10 +1455,10 @@ Icon font characters are added using the CSS before selector:
 
 ``` html
 <style>
-	@import url(http://weloveiconfonts.com/api/?family=zocial);
-	[class*="zocial-"]:before {
-	font-family: 'zocial', sans-serif;
-	
+    @import url(http://weloveiconfonts.com/api/?family=zocial);
+    [class*="zocial-"]:before {
+    font-family: 'zocial', sans-serif;
+    
 }
 </style>
 
@@ -1509,9 +1509,9 @@ You can use `source` + `srcset` to provide alternatives for unsupported browser:
 
 ``` html
 <picture>
-	<source srcset="kittens.webp" type="image/webp">
-	<source srcset="kittens.jpeg" type="image/jpeg">
-	<img src="kittens.jpg" alt="Two grey kittens">
+    <source srcset="kittens.webp" type="image/webp">
+    <source srcset="kittens.jpeg" type="image/jpeg">
+    <img src="kittens.jpg" alt="Two grey kittens">
 </picture>
 ```
 
@@ -1520,13 +1520,13 @@ Use different images for different viewport sizes:
 ``` html
 <picture>
   <source
-	media="(min-width: 1000px)"
-	srcset="kookaburra_large_1x.jpg 1x, kookaburra_large_2x.jpg 2x">
+    media="(min-width: 1000px)"
+    srcset="kookaburra_large_1x.jpg 1x, kookaburra_large_2x.jpg 2x">
   <source
-	media="(min-width: 500px)"
-	srcset="kookaburra_medium_1x.jpg 1x, kookaburra_medium_2x.jpg 2x">
+    media="(min-width: 500px)"
+    srcset="kookaburra_medium_1x.jpg 1x, kookaburra_medium_2x.jpg 2x">
   <img src="kookaburra_small.jpg"
-	alt="The kookaburra: a terrestrial tree kingfisher native to Australia and New Guinea">
+    alt="The kookaburra: a terrestrial tree kingfisher native to Australia and New Guinea">
 </picture>
 ```
 
