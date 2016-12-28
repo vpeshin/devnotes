@@ -1,3 +1,52 @@
+<!-- TOC depthTo:2 orderedList:true -->
+
+1. [Syntax](#syntax)
+
+<!-- /TOC -->
+
+[W3Schools jQuery tutorial](http://www.w3schools.com/jquery/default.asp)
+
+## Syntax
+
+`$(selector).action()`
+
+Bootstrap jQuery Example:
+
+``` javascript
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+```
+
+jQuery Events:
+
+- User’s interactions on a web page causing DOM events:
+  - Mouse: `click`, `dblclick`, `mouseenter`, `mouseleave`
+  - Keyboard: `keypress`, `keydown`, `keyup`
+  - Form: `submit`, `change`, `focus`, `blur`
+  - Document, Window: `load`, `resize`, `scroll`, `unload`
+- jQuery Event Methods: e.g., `ready()`, `click()`, `dblclick()`, `mousedown()`, `on()`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // .addClass() function allows you to add classes to elements
 // (suppose that jQuery library and the Animate.css library already included)
   $(document).ready(function() {
