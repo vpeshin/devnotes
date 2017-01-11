@@ -455,7 +455,7 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
 [[W3Schools 1](http://www.w3schools.com/js/js_arrays.asp)],
 [[W3Schools 2](http://www.w3schools.com/js/js_array_methods.asp)],
-[[W3Schools 3](http://www.w3schools.com/js/js_array_methods.asp)]
+[[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)]
 
 ``` javascript
 1.	var cars = ["Saab", "Volvo", "BMW"];  
@@ -468,7 +468,7 @@ Arrays are a special type of objects. Because of this, you can have variables of
 
 JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes. 
 
-The length property provides an easy way to append a new element to an array:
+The `length` property provides an easy way to append a new element to an array:
 
 ``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
@@ -526,7 +526,7 @@ The `pop()` method removes the last element from an array and returns the value 
 3.	var x = fruits.pop();      // the value of x is "Apple"  
 ```
 
-The `push()` method adds a new element to an array (at the end) and returns the new array length.
+The [push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) method adds a new element to an array (at the end) and returns the new array length.
 
 ``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
@@ -547,7 +547,7 @@ The `unshift()` method adds a new element to an array (at the beginning), and "u
 
 Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator `delete`. Using `delete` on array elements leaves undefined holes in the array. Use pop() or shift() instead.
 
-The `splice()` method can be used to add new items to an array or to remove items: 
+The [splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method can be used to add new items to an array or to remove items: 
 
 ``` javascript
 1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
@@ -580,7 +580,7 @@ The `concat()` method creates a new array by concatenating two arrays. `concat()
 4.	var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3   
 ```
 
-The `slice()` method slices out a piece of an array into a new array:
+The [slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method slices out a piece of an array into a new array:
 
 ``` javascript
 1.	var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];  
@@ -592,6 +592,17 @@ You can go through every element of array using `forEach()` (instead of `for` lo
 ``` javascript
 var pets = ["Dog", "Cat", "Rabbit"];
 pets.forEach(alert);
+```
+
+The `map()` method creates a new array with the results of calling a provided function on every element in this array:
+
+``` js
+var numbers = [1, 5, 10, 15];
+var roots = numbers.map(function(x){
+   return x * 2;
+});
+// roots is now [2, 10, 20, 30]
+// numbers is still [1, 5, 10, 15]
 ```
 
 
@@ -607,6 +618,12 @@ pets.forEach(alert);
 [[W3Schools 2](http://www.w3schools.com/js/js_switch.asp)]
 
 Use `===` for comparison.
+
+JavaScript has a ternary operator for conditional expressions:
+
+``` js
+var allowed = (age > 18) ? "yes" : "no";
+```
 
 
 ## Loops

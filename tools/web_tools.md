@@ -101,10 +101,46 @@ Compile the Less file into a CSS file:
 2. Creating `bower.json` File:  
 `> bower init`
 
+Example of `bower.json`:
+
+``` json
+{
+  "name": "conFusion",
+  "version": "1.0.0",
+  "description": "Website for an awesome restaurant",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "conFusion",
+    "Fusion",
+    "Restaurant"
+  ],
+  "authors": [
+    "Jogesh Muppala"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "angular": "~1.4.7"
+  }
+}
+```
+
 3. Installing Bower Components:  
+`> bower install`
+or
 `> bower install bootstrap -S`  
 `> bower install font-awesome -S`  
-The `-S` flag indicates that Bootstrap should be saved as a dependency for our our project in the `bower.json` file.
+The `-S` flag indicates that package should be saved as a dependency for our project in the `bower.json` file.
 
 4. Update links in files:
 
@@ -116,6 +152,9 @@ The `-S` flag indicates that Bootstrap should be saved as a dependency for our o
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 ```
+
+List globally installed packages:  
+`> npm ls -g --depth=0`
 
 
 ## Visual Studio Code
