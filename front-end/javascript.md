@@ -605,6 +605,17 @@ var roots = numbers.map(function(x){
 // numbers is still [1, 5, 10, 15]
 ```
 
+The [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method creates a new array with all elements that pass the test implemented by the provided function.
+
+``` js
+function isBigEnough(value) {
+  return value >= 10;
+}
+
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
+```
+
 
 ## Booleans
 

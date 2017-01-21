@@ -1,3 +1,8 @@
+## General
+
+[CS50](general/cs50.md)
+
+
 ## Front-End Development
 
 [HTML](front-end/html.md)  
@@ -12,6 +17,7 @@
 
 [MarkDown (CommonMark)](tools/markdown.md)  
 [Web Tools](tools/web_tools.md): Node.js and npm, Less and Sass, Bower
+
 
 ## GameDev
 

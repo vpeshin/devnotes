@@ -18,7 +18,7 @@
 <!-- /TOC -->
 
 
-## HTML Entities  
+## HTML Entities
 
 [[W3Schools 1](http://www.w3schools.com/html/html_entities.asp)],
 [[W3Schools 2](http://www.w3schools.com/charsets/ref_utf_symbols.asp)]
@@ -65,6 +65,8 @@ definition lists – `dl`, `dt` (any number of either)
   
 
 ## Tables
+
+[[MDN](https://developer.mozilla.org/ru/docs/Web/HTML/Element/table)]
 
 ``` html
 <table>  
@@ -153,8 +155,10 @@ This would apply “alternative” to the last two columns:
 ```
 
 
-## Forms  
-[[W3Schools](http://www.w3schools.com/html/html_forms.asp)]
+## Forms
+
+[[MDN](http://www.w3schools.com/html/html_forms.asp)],
+[[W3Schools](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)]
 
 ``` html
 <form action="processingscript.php" method="post">  <!-- method="get" -->  
@@ -258,6 +262,20 @@ A data list takes the form of a list of suggestions that accompanies a text fiel
     <input type="file" name="fileToUpload">
     <input type="submit" value="Submit the file">
 </form>
+
+### Simple validation
+
+The `required` attribute validates that an input is not empty. There are also type validations.
+
+``` html
+<form action="/sign-in-url" method="post">
+    <label for="email">Email:</label>
+    <input id="email" type="email" required>
+    <label for="password">Password:</label>
+    <input id="password" type="password" required>
+    <button>Login</button>
+</form>
+```
 
 
 ## Iframes

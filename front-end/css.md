@@ -3,9 +3,9 @@
 1. [Colors](#colors)
 2. [Text](#text)
 3. [Margins, Padding, Borders](#margins-padding-borders)
-4. [Class and ID Selectors](#class-and-id-selectors)
+4. [Selectors](#selectors)
 5. [Grouping and Nesting](#grouping-and-nesting)
-6. [Pseudo Classes and Pseudo Elements](#pseudo-classes-and-pseudo-elements)
+6. [Pseudo-classes and Pseudo-elements](#pseudo-classes-and-pseudo-elements)
 7. [Lists](#lists)
 8. [Tables](#tables)
 9. [Backgrounds](#backgrounds)
@@ -19,20 +19,18 @@
 17. [Rounded Corners](#rounded-corners)
 18. [Border Images](#border-images)
 19. [Shadows](#shadows)
-20. [Universal, Child, and Adjacent Selectors](#universal-child-and-adjacent-selectors)
-21. [At-Rules: `@import`, `@media`, and `@font-face`](#at-rules-import-media-and-font-face)
-22. [Attribute Selectors](#attribute-selectors)
-23. [Transitions](#transitions)
-24. [Transformations](#transformations)
-25. [Animations](#animations)
-26. [Multiple Columns](#multiple-columns)
-27. [User Interface](#user-interface)
-28. [Flexible Box](#flexible-box)
-29. [Media Queries](#media-queries)
-30. [Common Responsive Patterns](#common-responsive-patterns)
-31. [Responsive Tables](#responsive-tables)
-32. [Responsive Images](#responsive-images)
-33. [Other](#other)
+20. [At-Rules: `@import`, `@media`, and `@font-face`](#at-rules-import-media-and-font-face)
+21. [Transitions](#transitions)
+22. [Transformations](#transformations)
+23. [Animations](#animations)
+24. [Multiple Columns](#multiple-columns)
+25. [User Interface](#user-interface)
+26. [Flexible Box](#flexible-box)
+27. [Media Queries](#media-queries)
+28. [Common Responsive Patterns](#common-responsive-patterns)
+29. [Responsive Tables](#responsive-tables)
+30. [Responsive Images](#responsive-images)
+31. [Other](#other)
 
 <!-- /TOC -->
 
@@ -146,7 +144,21 @@ div.ex1 {
 ```
 
 
-## Class and ID Selectors
+## Selectors
+
+[[tutsplus](https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048)]
+
+### Descendant selector
+
+Select all anchor tags that are descendants of `li`:
+
+``` css
+li a {
+    ...
+}
+```
+
+### Class and ID Selectors
 
 A class selector is a name preceded by `.` and an ID selector is a name preceded by `#`.
 
@@ -180,6 +192,122 @@ p.jam {
 ```
 
 will only be applied to paragraph elements that have the class `jam`.
+
+
+### Universal selector
+
+[[W3Schools](http://www.w3schools.com/css/css_combinators.asp)]
+
+Using an `*` you can target everything.  
+The following will set the margin and padding on everything in a page to zero
+and everything within an element with the ID `contact` to be displayed as a block:
+
+``` css
+* {  
+    margin: 0;  
+    padding: 0;  
+}  
+#contact * {  
+    display: block;  
+}  
+```
+
+### Child selector
+
+`>` can be used to specify something that is a child (not grandchild) of something else:
+
+``` html
+<ul id="genus_examples">  
+    <li>Cats  
+        <ul>  
+            <li>Panthera</li>  
+            <li>Felis</li>  
+            <li>Neofelis</li>  
+        </ul>  
+    </li>  
+    <li>Apes  
+        <ul>  
+            <li>Pongo</li>  
+            <li>Pan</li>  
+            <li>Homo</li>  
+        </ul>  
+    </li>  
+</ul>
+```
+
+``` css
+#genus_examples > li { border: 1px solid red }  
+/*A red border would be drawn around “Cats” and “Apes” only.*/  
+```
+
+### Adjacent Selectors
+
+`+` is used to target an adjacent sibling of an element, essentially, something
+immediately following something.
+
+``` html
+<h1>Clouded leopards</h1>  
+<p>Clouded leopards are cats that belong to the genus Neofelis.</p>  
+<p>There are two extant species: Neofelis nebulosa and Neofelis diardi.</p>  
+```
+
+``` css
+h1 + p { font-weight: bold }  
+/*Only the first paragraph, that following the heading, will be made bold.*/  
+```
+
+The *general sibling* selector selects all elements that are siblings of a specified element.  
+The following example selects all `<p>` elements that are siblings of `<div>` elements:
+
+``` css
+div ~ p {  
+    background-color: yellow;  
+}  
+```
+
+### Attribute Selectors
+
+[[W3Schools](http://www.w3schools.com/css/css_attribute_selectors.asp)]
+
+Attribute selectors allow you to style an element’s box based on the presence of an HTML
+attribute or of an attribute’s value.  
+This basically says "shove a dotted line underneath all abbreviations with a `title` attribute":
+
+``` css
+abbr[title] { border-bottom: 1px dotted #ccc }  
+```
+
+This example will apply a width of 200 pixels only to input elements that are specified
+as being text boxes:
+
+``` css
+input[type=text] { width: 200px; }  
+```
+
+You can also target more than one attribute at a time. This will only apply a gray border
+to text inputs that are disabled:
+
+``` css
+input[type=text][disabled] { border: 1px solid #ccc }  
+```
+
+You can match an attribute without being exact:
+
+``` css
+[attribute^=something] /*will match a the value of an attribute that begins with something.*/  
+[attribute$=something] /*will match a the value of an attribute that ends with something.*/  
+[attribute*=something] /*will match a the value of an attribute that contains something, be it in the beginning, middle, or end.*/  
+```
+
+So, as an example, you could style external links (eg. "http://www.htmldog.com")
+differently to internal links (eg. "overhere.html") in the following way:
+
+``` css
+a[href^=http] {
+    padding-right: 10px;  
+    background: url(arrow.png) right no-repeat;  
+}  
+```
 
 
 ## Grouping and Nesting
@@ -221,17 +349,24 @@ This removes the need for classes or IDs on the `p` and `h1` tags in HTML:
 ```
 
 
-## Pseudo Classes and Pseudo Elements
+## Pseudo-classes and Pseudo-elements
 
+[[MDN 1](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)],
+[[MDN 2](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)],
 [[W3Schools 1](http://www.w3schools.com/css/css_pseudo_classes.asp)],
 [[W3Schools 2](http://www.w3schools.com/css/css_pseudo_elements.asp)]
 
-Pseudo classes are bolted on to selectors to specify a state or relation to the selector.
+Pseudo-classes are bolted on to selectors to specify a state or relation to the selector.
 
 ``` css
-a:visited {  
-    color: purple;  
-}  
+a:visited {
+    color: purple;
+}
+
+/*Make background of every second li purple*/ 
+li:nth-of-type(even) {
+    background: purple;
+}
   
 link  /*unvisited link*/  
 visited  /*visited link*/  
@@ -243,20 +378,22 @@ nth-child(n)  /*matches every element that is the nth child, regardless of type,
 last-child  
 target  
 first-of-type  
+nth-of-type(n)
+
 /*Note the difference: 
     p:nth-child(3) 
     p :nth-child(3)
 */
 ```
 
-Pseudo elements should include two colons (`p::first-letter`).
+Pseudo-elements is used to style specified parts of an element. Pseudo-elements should include two colons (`p::first-letter`).
 
 - `first-letter`  
 - `first-line`  
 - `before`  (see below) 
 - `after`  (see below)
 
-The `before` and `after` pseudo elements are used in conjunction with the content property.  
+The `before` and `after` pseudo-elements are used in conjunction with the content property.  
 The value of the content property can be `open-quote`, `close-quote`, any string enclosed
 in quotation marks, or any image, using `url(imagename)`.
 
@@ -317,10 +454,10 @@ ul {
 }  
   
 ul li {  
-     background-image: url(sqpurple.gif);  
-     background-repeat: no-repeat;  
-     background-position: 0px center;   
-     padding-left: 15px;   
+     background-image: url(sqpurple.gif);
+     background-repeat: no-repeat;
+     background-position: 0px center;
+     padding-left: 15px;
 }
 ```
 
@@ -336,6 +473,7 @@ ul {
 
 ## Tables
 
+[[MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Styling_tables)],
 [[W3Schools](http://www.w3schools.com/css/css_table.asp)]
 
 To specify table borders in CSS, use the `border` property.  
@@ -683,74 +821,6 @@ text-shadow: -2px 2px 2px #999; /*horizontal offset, vertical offset, blur radiu
 ```
 
 
-## Universal, Child, and Adjacent Selectors
-
-[[W3Schools](http://www.w3schools.com/css/css_combinators.asp)]
-
-Using an `*` you can target everything.  
-The following will set the margin and padding on everything in a page to zero
-and everything within an element with the ID `contact` to be displayed as a block:
-
-``` css
-* {  
-    margin: 0;  
-    padding: 0;  
-}  
-#contact * {  
-    display: block;  
-}  
-```
-
-`>` can be used to specify something that is a child (not grandchild) of something else:
-
-``` html
-<ul id="genus_examples">  
-    <li>Cats  
-        <ul>  
-            <li>Panthera</li>  
-            <li>Felis</li>  
-            <li>Neofelis</li>  
-        </ul>  
-    </li>  
-    <li>Apes  
-        <ul>  
-            <li>Pongo</li>  
-            <li>Pan</li>  
-            <li>Homo</li>  
-        </ul>  
-    </li>  
-</ul>
-```
-
-``` css
-#genus_examples > li { border: 1px solid red }  
-/*A red border would be drawn around “Cats” and “Apes” only.*/  
-```
-
-`+` is used to target an adjacent sibling of an element, essentially, something
-immediately following something.
-
-``` html
-<h1>Clouded leopards</h1>  
-<p>Clouded leopards are cats that belong to the genus Neofelis.</p>  
-<p>There are two extant species: Neofelis nebulosa and Neofelis diardi.</p>  
-```
-
-``` css
-h1 + p { font-weight: bold }  
-/*Only the first paragraph, that following the heading, will be made bold.*/  
-```
-
-The general sibling selector selects all elements that are siblings of a specified element.  
-The following example selects all `<p>` elements that are siblings of `<div>` elements:
-
-``` css
-div ~ p {  
-    background-color: yellow;  
-}  
-```
-
-
 ## At-Rules: `@import`, `@media`, and `@font-face`
 
 `@import` rule is used to bolt another stylesheet onto your existing one.  
@@ -795,51 +865,6 @@ p { font-family: "font of all knowledge", arial, sans-serif; }
 
 To use Google Web Fonts all you need to do is link to one of their external CSS files,
 which is nothing more than a `@font-face` rule.
-
-
-## Attribute Selectors
-
-[[W3Schools](http://www.w3schools.com/css/css_attribute_selectors.asp)]
-
-Attribute selectors allow you to style an element’s box based on the presence of an HTML
-attribute or of an attribute’s value.  
-This basically says "shove a dotted line underneath all abbreviations with a title attribute":
-
-``` css
-abbr[title] { border-bottom: 1px dotted #ccc }  
-```
-
-This example will apply a width of 200 pixels only to input elements that are specified
-as being text boxes:
-
-``` css
-input[type=text] { width: 200px; }  
-```
-
-You can also target more than one attribute at a time. This will only apply a gray border
-to text inputs that are disabled:
-
-``` css
-input[type=text][disabled] { border: 1px solid #ccc }  
-```
-
-CSS 3 further allows you to match an attribute without being exact:
-
-``` css
-[attribute^=something] /*will match a the value of an attribute that begins with something.*/  
-[attribute$=something] /*will match a the value of an attribute that ends with something.*/  
-[attribute*=something] /*will match a the value of an attribute that contains something, be it in the beginning, middle, or end.*/  
-```
-
-So, as an example, you could style external links (eg. "http://www.htmldog.com")
-differently to internal links (eg. "overhere.html") in the following way:
-
-``` css
-a[href^=http] {
-    padding-right: 10px;  
-    background: url(arrow.png) right no-repeat;  
-}  
-```
 
 
 ## Transitions
@@ -1427,7 +1452,7 @@ img {
     width: calc((100% - 10px) / 2);
 }
 
-img::last-of-type {
+img:last-of-type {
     margin-right: 0;
 }
 ```
