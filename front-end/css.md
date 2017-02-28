@@ -30,7 +30,8 @@
 28. [Common Responsive Patterns](#common-responsive-patterns)
 29. [Responsive Tables](#responsive-tables)
 30. [Responsive Images](#responsive-images)
-31. [Other](#other)
+31. [Useful Resources](#useful-resources)
+32. [Other](#other)
 
 <!-- /TOC -->
 
@@ -65,8 +66,8 @@ hsla(1, 100%, 50%, 1)
 font-family: arial, helvetica, serif  
 /*If the name of a font is more than one word, it should be put in quotation marks.*/  
   
-font-size: 2em  
-font-weight: bold / normal  
+font-size: 2em / 0.5rem  /*1em = font size of parent element / 1rem = font size of the html element */
+font-weight: bold / normal / 100 / 800
 font-style: italic / normal  
   
 text-decoration: underline / overline / line-through / none  
@@ -74,7 +75,7 @@ text-decoration: underline / overline / line-through / none
   
 text-transform: capitalize / uppercase / lowercase / none  
   
-letter-spacing: 0.5em / normal  
+letter-spacing: 0.5rem / normal  
 word-spacing: 2em / normal  
 line-height: 1.5 / normal  
 text-align: left / right / center / justify  
@@ -84,6 +85,23 @@ font: italic bold 12px/2 "Times New Roman", times, serif  /*combines font-style,
 ```
 
 CSS3 contains several new text features: `text-overflow`, `word-wrap`, `word-break`
+
+
+### Using Google Web Fonts
+
+``` html
+<head>
+    <link rel="stylesheet" type="text/css"
+             href="https://fonts.googleapis.com/css?family=Tangerine">
+```
+
+``` css
+body {
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
+}
+```
 
 
 ## Margins, Padding, Borders
@@ -117,9 +135,9 @@ Total element width = width + left padding + right padding + left border + right
 ``` css
 div {  
     width: 320px;  
-     padding: 10px;  
-     border: 5px solid gray;  
-     margin: 0;   
+    padding: 10px;  
+    border: 5px solid gray;  
+    margin: 0;   
 }  
 /* 
 320px (width) 
@@ -137,7 +155,8 @@ and the remaining space will be split equally between the two margins:
 
 ``` css
 div.ex1 {  
-    max-width: 500px;  
+    max-width: 500px; 
+    width: 80%; 
     margin: auto;  
     border: 3px solid #8AC007;  
 }  
@@ -375,6 +394,7 @@ hover  /*when something is passed over by an input from the user, such as when a
 focus  /*when something gains focus, that is when it is selected by, or is ready for keyboard input*/  
 first-child  /*will target something only if it is the very first descendant of an element (for example, first paragraph*/  
 nth-child(n)  /*matches every element that is the nth child, regardless of type, of its parent.*/  
+nth-child(2n)  /*matches every second element that is the nth child
 last-child  
 target  
 first-of-type  
@@ -531,7 +551,8 @@ th {
 
 [[W3Schools 1](http://www.w3schools.com/css/css_background.asp)],
 [[W3Schools 2](http://www.w3schools.com/css/css3_backgrounds.asp)],
-[[W3Schools 3](http://www.w3schools.com/css/css3_gradients.asp)]
+[[W3Schools 3](http://www.w3schools.com/css/css3_gradients.asp)],
+[[uiGradients](https://uigradients.com/)]
 
 Background images can be used in most HTML elements - not just for the whole page (body).
 
@@ -550,9 +571,9 @@ background: url(bg.png), url(bullet.png) 0 50% no-repeat, url(arrow.png) right n
 /*The background-size property allows you to stretch or compress a background image. */  
 background-size: auto / lengths / percentages / contain / cover / A combination of lengths, percentages, and auto  
   
-background-origin: padding-box / border-box / content-box  
-  
-/*Gradients:*/  
+background-origin: padding-box / border-box / content-box
+
+/*Gradients:*/
 background: linear-gradient(orange, red);  /*from top to bottom*/  
 background: linear-gradient(to bottom right, orange, red);  
 background: linear-gradient(20deg, orange, red);  
@@ -862,9 +883,6 @@ text-shadow: -2px 2px 2px #999; /*horizontal offset, vertical offset, blur radiu
 ``` css
 p { font-family: "font of all knowledge", arial, sans-serif; }  
 ```
-
-To use Google Web Fonts all you need to do is link to one of their external CSS files,
-which is nothing more than a `@font-face` rule.
 
 
 ## Transitions
@@ -1556,6 +1574,14 @@ Use different images for different viewport sizes:
 ```
 
 
+## Useful Resources
+- [placehold.it](https://placehold.it/), [placekitten](http://placekitten.com/): Image placeholders
+- [normalize.css](https://necolas.github.io/normalize.css/): Makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing.
+- [Bootswatch](https://bootswatch.com/): Free Bootstrap themes
+- [cdnjs](https://cdnjs.com/): CDNs for all the popular libraries
+- [Glyphicons](https://glyphicons.com/), [Font Awesome](http://fontawesome.io/get-started/), [Bootstrap-social](http://lipis.github.io/bootstrap-social/): Icon fonts
+
+
 ## Other
 
 Override all other styles by using `important`:
@@ -1564,10 +1590,8 @@ Override all other styles by using `important`:
 color: pink !important;
 ```
 
-Placeholder image, 200x300:  
-`http://placehold.it/200x300`  
-`http://placekitten.com/200/300`
-
-[normalize.css](https://necolas.github.io/normalize.css/) makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing.
-
 Ideal measure for text: 45-90 characters per line. ~65 cpl for the web.
+
+Organizing CSS:
+1. By specificity - from least specific to most specific
+2. By order on the page

@@ -3,9 +3,9 @@
 1. [Overview](#overview)
 2. [Node.js and Node Package Manager](#nodejs-and-node-package-manager)
 3. [Grunt](#grunt)
-4. [[Less](http://lesscss.org) and [Sass](http://sass-lang.com/guide)](#lesshttplesscssorg-and-sasshttpsass-langcomguide)
-5. [[Bower](https://bower.io)](#bowerhttpsbowerio)
-6. [Visual Studio Code](#visual-studio-code)
+4. [Less and Sass](#less-and-sass)
+5. [Bower](#bower)
+6. [Other Useful Tools](#other-useful-tools)
 
 <!-- /TOC -->
 
@@ -77,7 +77,7 @@ Grunt is useful when you are automating multiple tasks that are done repeatedly.
 `> npm install grunt-contrib-jshint --save-dev`
 
 
-## [Less](http://lesscss.org) and [Sass](http://sass-lang.com/guide)
+## Less and Sass
 
 Install less:  
 `> npm install -g less`
@@ -86,7 +86,7 @@ Compile the Less file into a CSS file:
 `> lessc mystyles.less > mystyles.css`
 
 
-## [Bower](https://bower.io)
+## Bower
 
 [Bower 101](https://medium.com/@ZaidHanania/bower-101-c0b57322df8#.yzfz1dmas)
 
@@ -157,53 +157,7 @@ List globally installed packages:
 `> npm ls -g --depth=0`
 
 
-## Visual Studio Code
+## Other Useful Tools
 
-### Using npm in VSCode
-
-- Ctrl+Shift+P => Tasks: Configure Task Runner => npm
-
-- Add to `tasks.json`:
-
-``` json
-"tasks": [
-		{
-			"taskName": "lint",
-			"args": ["run", "lint"]
-		}
-]
-```
-
-- Ctrl+P => task task_name
-
-### Using Grunt in VSCode
-
-- Ctrl+Shift+P => Tasks: Configure Task Runner => Grunt
-- Ctrl+P => task task_name
-
-### Using Typings (additional JS completion)
-
-- Create `jsconfig.json` file at the root of your JavaScript code. Example:
-
-``` json
-{
-    "compilerOptions": {
-        "target": "ES6"
-    },
-    "exclude": [
-        "node_modules"
-    ]
-}
-```
-
-- Install Typings CLI utility:  
-`> npm install typings --global`
-
-- Search for definitions:  
-`> typings search jquery`
-
-- Find a definition by name:  
-`> typings search --name jquery`
-
-- Install the typings at the same location as `jsconfig.json` (the root of your JavaScript project):  
-`> typings install dt~jquery --save --global`
+- [Postman](https://www.getpostman.com/): A powerful GUI platform to make your API development faster & easier
+- [Stackshare](https://stackshare.io/): Discover technology stacks and find the best software tools

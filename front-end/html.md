@@ -13,7 +13,8 @@
 11. [Responsive Web Design](#responsive-web-design)
 12. [Colors](#colors)
 13. [HTML APIs](#html-apis)
-14. [Other](#other)
+14. [Useful Resources](#useful-resources)
+15. [Other](#other)
 
 <!-- /TOC -->
 
@@ -487,6 +488,10 @@ The `object` element defines an embedded object within an HTML document.
 [[W3Schools 3](http://www.w3schools.com/html/html5_webstorage.asp)],
 [[W3Schools 4](http://www.w3schools.com/html/html5_app_cache.asp)],
 [[W3Schools 5](http://www.w3schools.com/html/html5_webworkers.asp)]
+
+
+## Useful Resources
+- [Glyphicons](https://glyphicons.com/), [Font Awesome](http://fontawesome.io/get-started/), [Bootstrap-social](http://lipis.github.io/bootstrap-social/): Icon fonts
 
 
 ## Other

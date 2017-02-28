@@ -16,8 +16,6 @@
 
 ## Getting Started with Bootstrap
 
-
-
 ### Using Bootstrap
 
 ``` html
@@ -45,6 +43,8 @@ Using Bootstrap CDN:
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>	
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
 ```
+
+[Bootswatch](https://bootswatch.com/) - Free themes for Bootstrap.
 
 ### Bootstrap Container class
 
@@ -99,7 +99,7 @@ col-sm-5 and col-sm-7 will be applied to Small, Medium, and Large screens -->
 <div class="col-xs-12 col-sm-7">
 ```
 
-Using column push and pull:
+### Using column push and pull
 
 ``` html
 <div class="col-xs-12 col-sm-5 col-sm-push-7">
@@ -113,7 +113,7 @@ sm, md, lg screens:
 -->
 ```
 
-Using offset:
+### Using offset
 
 ``` html
 <div class="col-sm-4 col-sm-offset-1">
@@ -123,7 +123,7 @@ of content will be laid out starting at column number 2 rather than column numbe
 -->
 ```
 
-Nesting Columns:
+### Nesting columns
 
 ``` html
 <div class="container">
@@ -203,7 +203,7 @@ Nesting Columns:
 
 ## Icon Fonts
 
-Glyphicons (included in Bootstrap):
+[Glyphicons](https://glyphicons.com/) (included in Bootstrap 3):
 
 ``` html
 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>	
@@ -224,6 +224,8 @@ Glyphicons (included in Bootstrap):
 ...
 <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id=">	
 ```
+
+[GitHub Octicons](https://octicons.github.com/)
 
 
 ## Bootstrap Buttons and Button Groups
@@ -252,7 +254,42 @@ Glyphicons (included in Bootstrap):
 </div>	
 ```
 
+You can make a link a button
+
+``` html
+<a href="http://www.getbootstrap.com" class="btn btn-info btn-lg">Docs</a>
+```
+
+
 ## Bootstrap Forms
+
+### Basic Form
+
+`.form-control` makes the input bootstrapified, `.form-group` adds some spacing.
+
+``` html
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+         </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+```
 
 ### Basic Horizontal Form
 
@@ -297,6 +334,8 @@ Glyphicons (included in Bootstrap):
     <div class="input-group-addon">)</div>
 </div>
 ```
+
+Do not mix form groups directly with input groups. Instead, nest the input group inside of the form group.
 
 
 ## Bootstrap Tables

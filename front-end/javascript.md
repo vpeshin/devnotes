@@ -4,18 +4,19 @@
 2. [JavaScript Output](#javascript-output)
 3. [Data Types](#data-types)
 4. [Objects](#objects)
-5. [Functions](#functions)
-6. [Scope](#scope)
-7. [Events](#events)
+5. [Arrays](#arrays)
+6. [Functions](#functions)
+7. [Scope](#scope)
 8. [Strings](#strings)
 9. [Numbers](#numbers)
 10. [Math](#math)
 11. [Dates](#dates)
-12. [Arrays](#arrays)
-13. [Booleans](#booleans)
-14. [Conditional Statements](#conditional-statements)
-15. [Loops](#loops)
-16. [The DOM (Document Object Model)](#the-dom-document-object-model)
+12. [Booleans](#booleans)
+13. [Conditional Statements](#conditional-statements)
+14. [Loops](#loops)
+15. [The DOM (Document Object Model)](#the-dom-document-object-model)
+16. [Events](#events)
+17. [Useful Resources](#useful-resources)
 
 <!-- /TOC -->
 
@@ -27,6 +28,9 @@ It is a good idea to place scripts at the bottom of the `<body>` element. This c
 
 Scripts can also be placed in external files.
 
+``` js
+<script src="myScript.js"></script>
+```
 
 ## JavaScript Output
 
@@ -41,13 +45,22 @@ JavaScript can "display" data in different ways:
 
 ## Data Types
 
-[[W3Schools](http://www.w3schools.com/js/js_datatypes.asp)]
+[[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)]
 
-`String`, `Number`, `Boolean`, `Array`, `Object`.
+- Six data types that are *primitives*:
+  - `Boolean`
+  - `Null`
+  - `Undefined`
+  - `Number`
+  - `String`
+  - `Symbol (new in ECMAScript 6)`
+- and `Object`
+
+`Arrays` are regular objects for which there is a particular relationship between integer-key-ed properties and the `length` property. Additionally, arrays inherit from `Array.prototype` which provides to them a handful of convenient methods to manipulate arrays like `indexOf` or `push`. This makes arrays a perfect candidate to represent lists or sets.
 
 ``` javascript
 var x1 = 34.00, x2 = 34;  // Numbers
-var cars = ["Saab", "Volvo", "BMW"];  // Array  
+var cars = ["Saab", "Volvo", "BMW"];  // Object (Array)
 var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};  // Object
 ```
 
@@ -60,8 +73,6 @@ var x = "John";      // Now x is a String
 ```
 
 You can use the JavaScript `typeof` operator to find the type of a JavaScript variable.
-
-In JavaScript, an array is a special type of object. Therefore `typeof [1,2,3,4]` returns `"object"`
 
 
 ## Objects
@@ -99,20 +110,257 @@ var car1 = new Car();
 ```
 
 
+## Arrays
+
+[[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)]
+
+``` javascript
+var cars = ["Saab", "Volvo", "BMW"];  
+var cars = new Array("Saab", "Volvo", "BMW");  // no need to use  
+var name = cars[0];  
+cars[0] = "Opel";   // modifies the first element in cars  
+```
+
+Arrays are a special type of objects. Because of this, you can have variables of different types in the same Array.
+
+JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes.
+
+The `length` property provides an easy way to append a new element to an array:
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits[fruits.length] = "Kiwi";          // Appends "Kiwi" to fruits
+```
+
+How do I know if a variable is an array (because `typeOf` returns object)?
+
+``` javascript
+function isArray(myArray) {  
+    return myArray.constructor.toString().indexOf("Array") > -1;  
+}  
+```
+
+Array of objects:
+
+``` js
+var posts = [
+  {
+    title: "cats are mediocre",
+    author: "Colt",
+    comments: ["Awesome post", "terrible post"]
+  },
+  {
+    title: "cats are actually awesome",
+    author: "Cat Luvr",
+    comments: ["<3", "Go to hell"]
+  },
+]
+
+posts[1].comments[1]; // "Go to hell"
+```
+
+### Object methods
+
+``` js
+var cats = {
+  speak: function() {
+    return "MEOW";
+  }
+};
+
+cat.speak(); // "MEOW"
+```
+
+### Array Iteration
+
+You can go through every element of array using `for` loop or [`forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that takes function as an argument:
+
+``` javascript
+var index;
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+for (index = 0; index < fruits.length; index++) {  
+    text += fruits[index];  
+}  
+```
+
+``` javascript
+var a = ['a', 'b', 'c'];
+
+a.forEach(function(element) {
+    console.log(element);
+});
+
+
+var pets = ["Dog", "Cat", "Rabbit"];
+
+pets.forEach(alert);
+```
+
+### Array Methods
+
+The `valueOf()` method is the default behavior for an array. It returns an array as a string.
+
+For JavaScript arrays, `valueOf()` and `toString()` are equal.
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+document.getElementById("demo").innerHTML = fruits.valueOf();   
+document.getElementById("demo").innerHTML = fruits.toString();  
+```
+
+The `join()` method also joins all array elements into a string. It behaves just like `toString()`, but you can specify the separator:
+
+``` javascript
+var fruits = ["Banana", "Orange","Apple", "Mango"];  
+document.getElementById("demo").innerHTML = fruits.join(" * ");  
+```
+
+The `pop()` method removes the last element from an array and returns the value that was "popped out".
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.pop();              // Removes the last element ("Mango") from fruits  
+var x = fruits.pop();      // the value of x is "Apple"  
+```
+
+The [push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) method adds a new element to an array (at the end) and returns the new array length.
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.push("Kiwi");            //  Adds a new element ("Kiwi") to fruits  
+var x = fruits.push("Peach");   //  the value of x is 6  
+```
+
+The `shift()` method removes the first element of an array, and "shifts" all other elements one place up. It returns the string that was "shifted out"  
+The `unshift()` method adds a new element to an array (at the beginning), and "unshifts" older elements. It returns the new array length.
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.shift();            // Removes the first element "Banana" from fruits   
+  
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.unshift("Lemon");    // Adds a new element "Lemon" to fruits   
+```
+
+Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator `delete`. Using `delete` on array elements leaves undefined holes in the array. Use pop() or shift() instead.
+
+The [splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method can be used to add new items to an array or to remove items: 
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.splice(2, 0, "Lemon", "Kiwi");  
+/* 
+The first parameter (2) defines the position where new elements should be added (spliced in). 
+The second parameter (0) defines how many elements should be removed. 
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added. 
+*/  
+  
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+	fruits.splice(0, 1);        // Removes the first element of fruits   
+```
+
+The `sort()` method sorts an array alphabetically.  
+The `reverse()` method reverses the elements in an array. You can use it to sort an array in descending order.
+
+``` javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];  
+fruits.sort();            // Sorts the elements of fruits   
+fruits.reverse();         // Reverses the order of the elements  
+```
+
+The `concat()` method creates a new array by concatenating two arrays. `concat()` can take any number of array arguments.
+
+``` javascript
+var arr1 = ["Cecilie", "Lone"];  
+var arr2 = ["Emil", "Tobias","Linus"];  
+var arr3 = ["Robin", "Morgan"];  
+var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3   
+```
+
+The [slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method slices out a piece of an array into a new array:
+
+``` javascript
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];  
+var citrus = fruits.slice(1, 3);  
+```
+
+The `map()` method creates a new array with the results of calling a provided function on every element in this array:
+
+``` js
+var numbers = [1, 5, 10, 15];
+var roots = numbers.map(function(x){
+   return x * 2;
+});
+// roots is now [2, 10, 20, 30]
+// numbers is still [1, 5, 10, 15]
+```
+
+The [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method creates a new array with all elements that pass the test implemented by the provided function.
+
+``` js
+function isBigEnough(value) {
+  return value >= 10;
+}
+
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
+```
+
+
 ## Functions
+
+[[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)]
 
 Functions can be defined with two different syntaxes:
 
 ``` javascript
-var myFunc = function(param1, param2, ...) {
+// Function declaration
+function myFunc(param1, param2, ...) {
     // code goes here
 }
 ```
 
 ``` javascript
-function myFunc(param1, param2, ...) {
+// Function expression
+var myFunc = function(param1, param2, ...) {
     // code goes here
 }
+```
+
+Anonymous function as an argument to higher order function:
+
+``` js
+setInterval(function(){
+    console.log("I am anonymous fuction");
+}, 2000)
+```
+
+Custom `myForEach()` function:
+
+``` js
+// VERSION 1
+function myForEach(arr, func){
+	for (var i = 0; i < arr.length; i++) {
+		func(arr[i]);
+	}
+}
+
+var colors = ["red", "orange", "yellow", "green", "blue", "PURPLE"];
+myForEach(colors, function(color){
+	console.log(color);
+});
+
+// VERSION 2 
+Array.prototype.myForEach = function(func){
+  for(var i = 0; i < this.length; i++) {
+   func(this[i]);
+  }
+};
+
+var colors = ["red", "orange", "yellow", "green", "blue", "PURPLE"];
+colors.myForEach(function(color){
+	console.log(color);
+});
 ```
 
 
@@ -122,45 +370,6 @@ function myFunc(param1, param2, ...) {
 
 local, global, automatically global
 
-
-## Events
-
-[[W3Schools](http://www.w3schools.com/js/js_events.asp)]
-
-`onclick`  
-`onchange`  
-`onmouseover`  
-`onmouseout`  
-`onkeydown`  
-`onload`  
-etc.
-
-An HTML event can be something the browser does, or something a user does.
-
-In this example, the code changes the content of its own element (using `this.innerHTML`):
-
-``` html
-<button onclick="this.innerHTML=Date()">The time is?</button>
-```
-
-It is more common to see event attributes calling functions:
-
-``` html
-<button onclick="displayDate()">The time is?</button>  
-```
-
-Adding event handler using javascript:
-
-``` html
-<html><body>
-    <script>
-        function do_something() {
-            alert("Page has loaded")
-        }
-        window.addEventListener("load", do_something);
-    </script>
-</body></html>
-```
 
 ## Strings
 
@@ -451,172 +660,6 @@ new Date(year, month, day, hours, minutes, seconds, milliseconds)
 ```
 
 
-## Arrays
-
-[[W3Schools 1](http://www.w3schools.com/js/js_arrays.asp)],
-[[W3Schools 2](http://www.w3schools.com/js/js_array_methods.asp)],
-[[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)]
-
-``` javascript
-1.	var cars = ["Saab", "Volvo", "BMW"];  
-2.	var cars = new Array("Saab", "Volvo", "BMW");  // no need to use  
-3.	var name = cars[0];  
-4.	cars[0] = "Opel";   // modifies the first element in cars  
-```
-
-Arrays are a special type of objects. Because of this, you can have variables of different types in the same Array.
-
-JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes. 
-
-The `length` property provides an easy way to append a new element to an array:
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits[fruits.length] = "Kiwi";          // Appends "Kiwi" to fruit  
-```
-
-Looping array elements:
-
-``` javascript
-1.	var index;
-2.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-3.	for (index = 0; index < fruits.length; index++) {  
-4.	    text += fruits[index];  
-5.	}  
-```
-
-When to use arrays. When to use objects:
-
-- JavaScript does not support associative arrays.
-- You should use objects when you want the element names to be strings (text).
-- You should use arrays when you want the element names to be numbers.
-
-How do I know if a variable is an array (because `typeOf` returns object)?
-
-``` javascript
-1.	function isArray(myArray) {  
-2.	    return myArray.constructor.toString().indexOf("Array") > -1;  
-3.	}  
-```
-
-### Array Methods
-
-The `valueOf()` method is the default behavior for an array. It returns an array as a string.
-
-For JavaScript arrays, `valueOf()` and `toString()` are equal.
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	document.getElementById("demo").innerHTML = fruits.valueOf();   
-3.	document.getElementById("demo").innerHTML = fruits.toString();  
-```
-
-The `join()` method also joins all array elements into a string. It behaves just like `toString()`, but you can specify the separator:
-
-``` javascript
-1.	var fruits = ["Banana", "Orange","Apple", "Mango"];  
-2.	document.getElementById("demo").innerHTML = fruits.join(" * ");  
-```
-
-The `pop()` method removes the last element from an array and returns the value that was "popped out".
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits.pop();              // Removes the last element ("Mango") from fruits  
-3.	var x = fruits.pop();      // the value of x is "Apple"  
-```
-
-The [push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) method adds a new element to an array (at the end) and returns the new array length.
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits.push("Kiwi");            //  Adds a new element ("Kiwi") to fruits  
-3.	var x = fruits.push("Peach");   //  the value of x is 6  
-```
-
-The `shift()` method removes the first element of an array, and "shifts" all other elements one place up. It returns the string that was "shifted out"  
-The `unshift()` method adds a new element to an array (at the beginning), and "unshifts" older elements. It returns the new array length.
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits.shift();            // Removes the first element "Banana" from fruits   
-3.	  
-4.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-5.	fruits.unshift("Lemon");    // Adds a new element "Lemon" to fruits   
-```
-
-Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator `delete`. Using `delete` on array elements leaves undefined holes in the array. Use pop() or shift() instead.
-
-The [splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method can be used to add new items to an array or to remove items: 
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits.splice(2, 0, "Lemon", "Kiwi");  
-3.	/* 
-4.	The first parameter (2) defines the position where new elements should be added (spliced in). 
-5.	The second parameter (0) defines how many elements should be removed. 
-6.	The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added. 
-7.	*/  
-8.	  
-9.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-10.	fruits.splice(0, 1);        // Removes the first element of fruits   
-```
-
-The `sort()` method sorts an array alphabetically.  
-The `reverse()` method reverses the elements in an array. You can use it to sort an array in descending order.
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Apple", "Mango"];  
-2.	fruits.sort();            // Sorts the elements of fruits   
-3.	fruits.reverse();         // Reverses the order of the elements  
-```
-
-The `concat()` method creates a new array by concatenating two arrays. `concat()` can take any number of array arguments.
-
-``` javascript
-1.	var arr1 = ["Cecilie", "Lone"];  
-2.	var arr2 = ["Emil", "Tobias","Linus"];  
-3.	var arr3 = ["Robin", "Morgan"];  
-4.	var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3   
-```
-
-The [slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method slices out a piece of an array into a new array:
-
-``` javascript
-1.	var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];  
-2.	var citrus = fruits.slice(1, 3);  
-```
-
-You can go through every element of array using `forEach()` (instead of `for` loop):
-
-``` javascript
-var pets = ["Dog", "Cat", "Rabbit"];
-pets.forEach(alert);
-```
-
-The `map()` method creates a new array with the results of calling a provided function on every element in this array:
-
-``` js
-var numbers = [1, 5, 10, 15];
-var roots = numbers.map(function(x){
-   return x * 2;
-});
-// roots is now [2, 10, 20, 30]
-// numbers is still [1, 5, 10, 15]
-```
-
-The [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method creates a new array with all elements that pass the test implemented by the provided function.
-
-``` js
-function isBigEnough(value) {
-  return value >= 10;
-}
-
-var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
-// filtered is [12, 130, 44]
-```
-
-
 ## Booleans
 
 [[W3Schools 1](http://www.w3schools.com/js/js_booleans.asp)],
@@ -628,7 +671,7 @@ var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
 ([W3Schools 1](http://www.w3schools.com/js/js_if_else.asp)],
 [[W3Schools 2](http://www.w3schools.com/js/js_switch.asp)]
 
-Use `===` for comparison.
+Use `===` for comparison (to compare value AND type).
 
 JavaScript has a ternary operator for conditional expressions:
 
@@ -664,11 +707,15 @@ for (x in person) {      // item x in object person
 }    // => JohnDoe25
 ```
 
-``` javascript
-while (i < 10) {  
-     text += "The number is " + i;  
-     i++;  
-}  
+``` js
+// Check if string contains "yes"
+var answer = prompt("are we there yet?");
+
+while(answer.indexOf("yes" || "yeah") === -1) {
+  var answer = prompt("are we there yet?");
+}
+
+alert("Yes, we made it!");
 ```
 
 ``` javascript
@@ -681,6 +728,8 @@ while (i < 10);
 
 
 ## The DOM (Document Object Model)
+
+Everything is stored inside of the `document` object.
 
 ### Node Relationships
 
@@ -709,11 +758,16 @@ function handleClick(event) {
 }
 ```
 
-### Locating Nodes
+### Select and Manipulate Nodes
+
+Selecting:
 
 - Using full path to the node
+- `getElementById()`
+- `getElementByClassName()'
 - `getElementsByTagName()`
-- `getElementById`
+- `querySelector()` - returns the first element that matches a given CSS-style selector
+- `querySelectorAll()' - returns a list of elements that matches a given CSS-style selector
 
 ``` html
 <body>
@@ -723,11 +777,13 @@ function handleClick(event) {
 
 <form>
 <input onclick="change_color1()" type="button"
-	value="Change using method 1">
+	value="Change using full path">
 <input onclick="change_color2()" type="button"
-	value="Change using method 2">
+	value="Change using getElementByTagName()">
 <input onclick="change_color3()" type="button"
-	value="Change using method 3">
+	value="Change using getElementById()">
+<input onclick="change_color4()" type="button"
+	value="Change using querySelector()">
 </form>
 
 </body>
@@ -745,24 +801,131 @@ function change_color2(){
 function change_color3(){
 	document.getElementById("cute_text").style.color="blue";
 }
+
+function change_color4(){
+  document.querySelector("#h1").style.color = "pink";
+}
 ```
 
-Another way to change something after you've located it is `setAttribute()`.
+### Manipulating Style:
+
+- `.style` - not recommended
+- `.classList.add()`, `.classList.remove()`, `.classList.toggle()`
+- `setAttribute()` (also see "Manipulating Attributes" below)
+
+Rather than directly manipulating style with JS (see above), we can define a CSS class and then toggle it on or off with JS.
+
+``` css
+.some-class {
+  color: "blue";
+}
+```
+
+``` js
+var tag = document.getElementById("cute_text");
+// Add a class to the selected element
+tag.classList.add("some-class");
+// Remove a class
+tag.classList.remove("some-class");
+// Toggle a class
+tag.classList.toggle("some-class");
+```
 
 ``` javascript
-the_node=getElementById("thisNode");
+the_node = getElementById("thisNode");
 the_node.setAttribute("style", "color:red");
+```
+
+Simple TODO list (also see "Events")
+
+``` html
+<ul>
+	<li>Wash Cat</li>
+	<li>Feed Cat</li>
+	<li>Feed Cat to Dog</li>
+</ul>
+```
+
+``` css
+.done {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
+.selected {
+	color: green;
+}
+```
+
+``` js
+var lis = document.querySelectorAll("li");
+
+for(var i = 0; i < lis.length; i++){
+	lis[i].addEventListener("mouseover", function(){
+		this.classList.add("selected");
+	});
+
+	lis[i].addEventListener("mouseout", function(){
+		this.classList.remove("selected");
+	});
+
+	lis[i].addEventListener("click", function(){
+		this.classList.toggle("done");
+	});
+}
+```
+
+### Manipulating Text
+
+- `textContext`
+- `innerHTML` - keeps html elements intact
+
+``` html
+<p>
+  This is an <strong>awesome</strong> paragraph.
+</p>
+```
+
+``` js
+var tag = document.querySelector("p");
+
+tag.textContent // "This is awesome paragraph"
+tag.innerHTML // "This is <strong>awesome</strong> paragraph"
+
+// Alter the textContent
+tag.textContent = "blah blah blah";
+```
+
+### Manipulating Attributes
+
+Use `getAttribute()` and `setAttribute()` to read and write attributes like `src` or `href`
+
+``` html
+<a href="www.google.com">I am a link</a>
+<img src="logo.png">
+```
+
+``` js
+var link = document.querySelector("a");
+link.getAttribute("href");  //"www.google.com"
+link.setAttribute("href","www.dogs.com"); 
+//<a href="www.dogs.com">I am a link</a>
+
+//To change image src
+var img = document.querySelector("img");
+img.setAttribute("src", "corgi.png");
+//<img src="corgi.png">
 ```
 
 ### Creating and Adding Nodes
 
 Creating nodes:  
-`createElement()`  
-`createTextNode()`
+- `createElement()`
+- `createTextNode()`
 
 Adding nodes:  
-`insertBefore()`  
-`appendChild()`
+- `insertBefore()`
+- `appendChild()`
 
 ``` html
 <body onclick="insert_new_text()">
@@ -835,3 +998,93 @@ function myFunction() {
 }
 ```
 
+
+## Events
+
+[[MDN](https://developer.mozilla.org/en-US/docs/Web/Events)]
+
+`onclick`  
+`onchange`  
+`onmouseover`  
+`onmouseout`  
+`onkeydown`  
+`onload`  
+etc.
+
+An HTML event can be something the browser does, or something a user does.  
+We select an element and then add an *event listener*.
+
+To add a listener, we use a method called `addEventListener`
+
+``` html
+<html><body>
+    <script>
+        function do_something() {
+            alert("Page has loaded")
+        }
+        window.addEventListener("load", do_something);
+    </script>
+</body></html>
+```
+
+Let's display a message when a button is clicked
+
+``` html
+<button>Click Me</button>
+<p>No One Has Clicked Me Yet</p>
+```
+
+``` js
+var button = document.querySelector("button");
+var paragraph = document.querySelector("p");
+
+// Setup click listener
+button.addEventListener("click", function() {
+  paragraph.textContent = "Someone Clicked the Button!";
+});
+```
+
+In this example, the code changes the content of its own element (using `this.innerHTML`):
+
+``` html
+<button onclick="this.innerHTML=Date()">The time is?</button>
+```
+
+### Event Bubbling
+
+DOM elements can be nested inside each other. And somehow, the handler of the parent works even if you click on it’s child. The reason is *event bubbling*. The bubbling goes right to the top. When an event occurs on an element - it will bubble up to `<HTML>`, triggering handlers on it’s way.
+
+``` js
+// Stopping the bubbling
+element.onclick = function(event) {
+  event = event || window.event // cross-browser event
+  if (event.stopPropagation) {
+      // W3C standard variant
+      event.stopPropagation()
+    } else {
+      // IE<9 variant
+      event.cancelBubble = true
+    }
+}
+
+// One-lined variant
+element.onclick = function(event) {
+  event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true)
+}
+```
+
+
+## Useful Resources
+
+- [JavaScript Style Guide](https://github.com/airbnb/javascript)
+- [You might not need jQuery](http://youmightnotneedjquery.com/): Vanilla JavaScript instead of jQuery
+- [Underscore.js](http://underscorejs.org/)
+- [Lodash](https://lodash.com/)
+- [reqwest](https://github.com/ded/Reqwest), [then-request](https://github.com/then/request), [superagent](https://github.com/visionmedia/superagent): AJAX alternatives
+- [Animate.css](https://daneden.github.io/animate.css/), [Move.js](https://github.com/visionmedia/move.js): Animation
+- [bonzo](https://github.com/ded/bonzo), [$dom](https://github.com/julienw/dollardom): DOM utilities
+- [qwery](https://github.com/ded/qwery), [sizzle](http://sizzlejs.com/): CSS selector engines
+- [EventEmitter](https://github.com/Olical/EventEmitter), [Vine](https://github.com/arextar/Vine), [microevent](https://github.com/jeromeetienne/microevent.js): Events
+- [cdnjs](https://cdnjs.com/): CDNs for all the popular libraries
+- [Paper.js](http://paperjs.org/): Vector graphics scripting 
+- [howler.js](https://howlerjs.com/): Audio library

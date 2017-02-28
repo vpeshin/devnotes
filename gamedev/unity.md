@@ -2,6 +2,7 @@
 
 1. [Tweaks](#tweaks)
 2. [Keyboard input](#keyboard-input)
+3. [Tips](#tips)
 
 <!-- /TOC -->
 
@@ -10,6 +11,7 @@
 Edit `%ProgramFiles%\Unity\Editor\Data\Resources\ScriptTemplates\81-C# Script-NewBehaviourScript.cs.txt`
 
 Make custom Game resolution (1280x720) and set Camera Size to 3.6
+
 
 ## Keyboard input
 
@@ -21,3 +23,8 @@ if (Input.GetKeyDown(KeyCode.Space))
     text.text = "Space key pressed";
 }
 ```
+
+
+## Tips
+
+- First make a design document
