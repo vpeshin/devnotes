@@ -3,6 +3,7 @@
 1. [Node.js](#nodejs)
 2. [IntelliSense for Node.js modules](#intellisense-for-nodejs-modules)
 3. [Tasks](#tasks)
+4. [Git](#git)
 
 <!-- /TOC -->
 
@@ -74,3 +75,31 @@ app.listen(3000, function() {
 
 - Ctrl+Shift+P => Tasks: Configure Task Runner => Grunt
 - Ctrl+P => task task_name
+
+
+## Git
+
+`git config --global user.name vpeshin`
+
+Retrieve existing repository
+`git clone https://github.com/vpeshin/bookmarks.git`
+
+Push local repository
+Ctrl+Shift+G => Initialize Git Repository
+
+Open github.com and create a Repo. Copy the path to the .git for later use.
+
+Using the terminal, navigate to the location where your vscode project is and type the following:
+`git remote add origin https://github.com/vpeshin/SampleProject.git`
+
+Create a .gitignore file in your project's root directory. 
+`copy NUL .gitignore`
+
+Example of .gitignore:
+#ignore everything
+*.*
+#except .c source
+!*.c
+
+`git commit -m 'initial commit'`
+`git push -u origin master`
