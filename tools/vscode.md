@@ -1,36 +1,10 @@
 <!-- TOC depthTo:2 orderedList:true -->
 
-1. [Node.js](#nodejs)
-2. [IntelliSense for Node.js modules](#intellisense-for-nodejs-modules)
-3. [Tasks](#tasks)
-4. [Git](#git)
+1. [IntelliSense for Node.js modules](#intellisense-for-nodejs-modules)
+2. [Tasks](#tasks)
+3. [Git](#git)
 
 <!-- /TOC -->
-
-## Node.js
-
-1. Install [Node.js](https://nodejs.org/en/)
-2. `mkdir nodehttp`
-3. `cd nodehttp`
-4. `npm init`
-5. `npm install express -S`
-6. Create `server.js`. Example: 
-
-```js
-var express = require('express');
-var app = express();
- 
-app.get('/', function(req, res) {
- res.send('Hello Express');
-});
- 
-app.listen(3000, function() {
- console.log("Server is running at 3000 port!");
-});
-```
-
-7. `node server`
-
 
 ## IntelliSense for Node.js modules
 
