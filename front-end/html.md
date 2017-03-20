@@ -502,7 +502,6 @@ The `object` element defines an embedded object within an HTML document.
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-
 ### Presentational Tags in HTML
 
 Try not to use `i`, `b`, `u`, `s`, `small`, `sub`, and `sup`.  

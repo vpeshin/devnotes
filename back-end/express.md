@@ -13,7 +13,7 @@
 2. `mkdir nodehttp`
 3. `cd nodehttp`
 4. `npm init`
-5. `npm install express --save`
+5. `npm install express ejs --save`
 6. Create `app.js`. Example: 
 
 ```js
@@ -73,7 +73,7 @@ app.get("/fallinlovewith/:thing", function(req, res){
    res.render("love", {thingVar: thing});
 });
 
-app.get("/posts", function(req, res){
+app.get("/posts", function(req, res) {
     var posts = [
         {title: "Post 1", author: "Susy"},
         {title: "My adorable pet bunny", author: "Charlie"},
@@ -83,7 +83,7 @@ app.get("/posts", function(req, res){
     res.render("posts", {posts: posts});
 })
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT, process.env.IP, function() {
    console.log("Server is listening!!!"); 
 });
 ```

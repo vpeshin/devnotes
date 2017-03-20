@@ -63,8 +63,10 @@ Ctrl+Shift+G => Initialize Git Repository
 
 Open github.com and create a Repo. Copy the path to the .git for later use.
 
-Using the terminal, navigate to the location where your vscode project is and type the following:
-`git remote add origin https://github.com/vpeshin/SampleProject.git`
+Using the terminal, navigate to the location where your vscode project is and type the following:  
+`git remote add origin https://github.com/vpeshin/SampleProject.git`  
+Add another remote repository:  
+`git remote set-url --add --push origin https://gitlab.com/vpeshin/SampleProject.git`
 
 Create a .gitignore file in your project's root directory. 
 `copy NUL .gitignore`
@@ -77,3 +79,4 @@ Example of .gitignore:
 
 `git commit -m 'initial commit'`
 `git push -u origin master`
+
