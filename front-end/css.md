@@ -1580,7 +1580,7 @@ Use different images for different viewport sizes:
 - [Bootswatch](https://bootswatch.com/): Free Bootstrap themes
 - [cdnjs](https://cdnjs.com/): CDNs for all the popular libraries
 - [Glyphicons](https://glyphicons.com/), [Font Awesome](http://fontawesome.io/get-started/), [Bootstrap-social](http://lipis.github.io/bootstrap-social/): Icon fonts
-
+- [Semantic UI](https://semantic-ui.com/): Bootstrap alternative
 
 ## Other
 

@@ -3,6 +3,7 @@
 1. [IntelliSense for Node.js modules](#intellisense-for-nodejs-modules)
 2. [Tasks](#tasks)
 3. [Git](#git)
+4. [Bootstrap code completion](#bootstrap-code-completion)
 
 <!-- /TOC -->
 
@@ -80,3 +81,26 @@ Example of .gitignore:
 `git commit -m 'initial commit'`
 `git push -u origin master`
 
+
+## Bootstrap code completion
+
+1. `ext install vscode-html-css`
+2. Add an resource.json file inside your .vscode or project root folder, you can configure paths to your used style sheets.
+3. Example of resource.json file:
+
+```json
+{
+  "css": {
+    "site": [
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+      "node_modules/font-awesome/css/font-awesome.css",
+      "node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css",
+      "node_modules/select2/dist/css/select2.css",
+      "node_modules/select2-bootstrap-theme/dist/select2-bootstrap.css"
+    ],
+    "style": [
+      "src/main/resources/main/css/style.css"
+    ]
+  }
+}
+```
