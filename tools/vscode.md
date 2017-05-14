@@ -56,11 +56,11 @@
 
 `git config --global user.name vpeshin`
 
-Retrieve existing repository
+Retrieve existing repository  
 `git clone https://github.com/vpeshin/bookmarks.git`
 
-Push local repository
-Ctrl+Shift+G => Initialize Git Repository
+Push local repository  
+Ctrl+Shift+G => Initialize Git Repository  
 
 Open github.com and create a Repo. Copy the path to the .git for later use.
 
@@ -69,17 +69,24 @@ Using the terminal, navigate to the location where your vscode project is and ty
 Add another remote repository:  
 `git remote set-url --add --push origin https://gitlab.com/vpeshin/SampleProject.git`
 
-Create a .gitignore file in your project's root directory. 
+Create a .gitignore file in your project's root directory.  
 `copy NUL .gitignore`
 
-Example of .gitignore:
-#ignore everything
-*.*
-#except .c source
+Example of .gitignore:  
+#ignore everything  
+*.*  
+#except .c source  
 !*.c
 
-`git commit -m 'initial commit'`
-`git push -u origin master`
+### Console git workflow:  
+- `git config --global user.name vpeshin`
+- `git clone https://github.com/vpeshin/bookmarks.git`
+- `git init`
+- `git status`
+- `git add .`
+- `git commit -m 'initial commit'`
+- `git push -u origin master`
+- `git log`
 
 
 ## Bootstrap code completion

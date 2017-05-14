@@ -1088,3 +1088,4 @@ element.onclick = function(event) {
 - [cdnjs](https://cdnjs.com/): CDNs for all the popular libraries
 - [Paper.js](http://paperjs.org/): Vector graphics scripting 
 - [howler.js](https://howlerjs.com/): Audio library
+- [Passport](http://passportjs.org/): Authentication for Node.js
