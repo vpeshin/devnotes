@@ -55,6 +55,7 @@
 ## Git
 
 `git config --global user.name vpeshin`
+`git config --global user.email 'vl.peshin@gmail.com'`
 
 Retrieve existing repository  
 `git clone https://github.com/vpeshin/bookmarks.git`
@@ -80,6 +81,7 @@ Example of .gitignore:
 
 ### Console git workflow:  
 - `git config --global user.name vpeshin`
+- `git config --global user.email 'vl.peshin@gmail.com'`
 - `git clone https://github.com/vpeshin/bookmarks.git`
 - `git init`
 - `git status`
