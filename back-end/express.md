@@ -9,6 +9,7 @@
 7. [MongoDB](#mongodb)
 8. [Sanitizing](#sanitizing)
 9. [Authentication](#authentication)
+10. [Using different databases locally and on heroku](#using-different-databases-locally-and-on-heroku)
 
 <!-- /TOC -->
 
@@ -450,3 +451,19 @@ app.put("/blogs/:id", function(req, res){
 ## Authentication
 
 (See *AuthDemo* project)
+
+
+## Using different databases locally and on heroku
+
+Create new environment variable:  
+`export DATABASEURL=mongodb://localhost/cat_app'  
+`heroku config:set DATABASEURL=mongodb://colt:rusty@ds055525.mongolab.com:55525/yelpcam`
+
+app.js:
+
+```js
+...
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v11";
+mongoose.connect(url);
+...
+```

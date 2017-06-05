@@ -94,7 +94,7 @@ Example of .gitignore:
 ## Bootstrap code completion
 
 1. `ext install vscode-html-css`
-2. Add an resource.json file inside your .vscode or project root folder, you can configure paths to your used style sheets.
+2. [obsolete?] Add an resource.json file inside your .vscode or project root folder, you can configure paths to your used style sheets.
 3. Example of resource.json file:
 
 ```json
@@ -112,4 +112,12 @@ Example of .gitignore:
     ]
   }
 }
+```
+
+Remote style sheets can be specified in VS Code settings:
+
+```json
+"css.remoteStyleSheets": [
+  "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+]
 ```

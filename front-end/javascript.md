@@ -4,19 +4,21 @@
 2. [JavaScript Output](#javascript-output)
 3. [Data Types](#data-types)
 4. [Objects](#objects)
-5. [Arrays](#arrays)
-6. [Functions](#functions)
-7. [Scope](#scope)
-8. [Strings](#strings)
-9. [Numbers](#numbers)
-10. [Math](#math)
-11. [Dates](#dates)
-12. [Booleans](#booleans)
-13. [Conditional Statements](#conditional-statements)
-14. [Loops](#loops)
-15. [The DOM (Document Object Model)](#the-dom-document-object-model)
-16. [Events](#events)
-17. [Useful Resources](#useful-resources)
+5. [OOP in JavaScript](#oop-in-javascript)
+6. [Arrays](#arrays)
+7. [Functions](#functions)
+8. [Scope](#scope)
+9. [Strings](#strings)
+10. [Numbers](#numbers)
+11. [Math](#math)
+12. [Dates](#dates)
+13. [Booleans](#booleans)
+14. [Conditional Statements](#conditional-statements)
+15. [Loops](#loops)
+16. [Keyword `this`](#keyword-this)
+17. [The DOM (Document Object Model)](#the-dom-document-object-model)
+18. [Events](#events)
+19. [Useful Resources](#useful-resources)
 
 <!-- /TOC -->
 
@@ -98,15 +100,219 @@ name = person.fullName();
 
 JavaScript objects cannot be compared.
 
-Though JavaScript has no classes, you can mimic many of the characteristics with its functions.  
-The new keyword allows us to create a new instance of an Object. Remember that functions are objects. In the code brlow, you can think of the function Car as a JavaScript version of a class definition.
 
-``` javascript
-function Car() {};
-/*
-var Car = function() {};
-*/
-var car1 = new Car();
+## OOP in JavaScript
+
+Though JavaScript has no classes, you can mimic many of the characteristics with its functions.  
+The `new` keyword allows us to create a new instance of an `Object`. Remember that functions are objects. In the code below, you can think of the function `Car` as a JavaScript version of a class definition.
+
+```js
+function House(bedrooms, bathrooms, numSqft){
+  this.bedrooms = bedrooms;
+  this.bathrooms = bathrooms;
+  this.numSqft = numSqft;
+}
+
+var firstHouse = new House(2,2,1000);
+firstHouse.bedrooms; // 2
+firstHouse.bathrooms; // 2
+firstHouse.numSqft; // 1000
+```
+
+```js
+function Dog(name, age) {
+  this.name = name;
+  this.age = age;
+  this.bark = function() {
+    console.log(this.name + " just barked!");
+  }  
+}
+
+var rusty = new Dog('Rusty', 3); 
+var fido = new Dog('Fido', 1);
+
+rusty.bark(); // Rusty just barked!
+fido.bark(); // Fido just barked!
+```
+
+Multiple constructors:
+
+```js
+function Car(make, model, year){
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.numWheels = 4;
+}
+
+function Motorcycle(make, model, year){
+  // using call
+  Car.call(this, make, model, year)
+  this.numWheels = 2;
+}
+
+function Motorcycle(make, model, year){
+  // using apply
+  Car.apply(this, [make,model,year]);
+  this.numWheels = 2;
+}
+
+function Motorcycle(make, model, year){
+  // even better using apply with arguments
+  Car.apply(this, arguments);
+  this.numWheels = 2;
+}
+```
+
+### Prototypes
+
+Every constructor function has a property on it called `prototype`, which is an object.  
+The prototype object has a property on it called `constructor`, which points back to the constructor function.  
+Anytime an object is created using the `new` keyword, a property called `__proto__` gets created, linking the object and the prototype property of the constructor function.
+
+```js
+// this is the constructor function
+function Person(name){
+  this.name = name;
+}
+
+// this is an object created from the Person constructor
+var elie = new Person("Elie");
+var colt = new Person("Colt");
+
+// since we used the new keyword, we have established
+// a link between the object and the prototype property
+// we can access that using __proto__
+elie.__proto__ === Person.prototype; // true
+colt.__proto__ === Person.prototype; // true
+
+// The Person.prototype object also has a property
+// called constructor which points back to the function
+Person.prototype.constructor === Person; // true
+```
+
+Refactoring using prototypes:
+
+```js
+function Person(name){
+  this.name = name;
+  this.sayHi = function(){
+      return "Hi " + this.name; 
+  }
+}
+
+elie = new Person("Elie");
+elie.sayHi(); // Hi Elie
+
+// now this code works, but it is inefficient
+// every time we make an object using the new keyword we have to redefine this function
+// but its the same for everyone! Let's put it on the prototype instead!
+function Person(name){
+  this.name = name;
+}
+
+Person.prototype.sayHi = function(){
+  return "Hi " + this.name; 
+}
+
+elie = new Person("Elie");
+elie.sayHi(); // Hi Elie
+```
+
+Another example:
+
+```js
+function Vehicle(make, model, year){
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+Vehicle.prototype.isRunning = false;
+
+Vehicle.prototype.turnOn = function(){
+  this.isRunning = true;
+}
+
+Vehicle.prototype.turnOff = function(){
+  this.isRunning = false;
+}
+
+Vehicle.prototype.honk = function(){
+  if(this.isRunning){
+      return "beep!";
+  }
+}
+```
+
+### Closures
+
+A closure is a function that makes use of variables defined in outer functions that have previously returned.
+
+```js
+function outer(a){
+  return function inner(b){
+      // the inner function is making use of the variable "a"
+      // which was defined in an outer function called "outer"
+      // and by the time this is called, that outer function has returned
+      // this function called "inner" is a closure!
+      return a + b
+  }
+}
+
+outer(5)(5) // 10
+
+var storeOuter = outer(5)
+storeOuter(10) // 15
+```
+
+We can use closures to define private variables (which JavaScript doesn't have built in)
+
+```js
+function counter(){
+  var count = 0
+  return function(){
+      return ++count
+  }
+}
+
+counter1 = counter()
+counter1() // 1
+counter1() // 2
+
+counter2 = counter()
+counter2() // 1
+counter2() // 2
+
+counter1() // 3 this is not affected by counter2!
+
+count // ReferenceError: count is not defined - because it is private!
+```
+
+```js
+function classRoom(){
+  var instructors = ["Colt", "Elie"]
+  return {
+      getInstructors: function(){
+          return instructors;
+      },
+      addInstructor: function(instructor){
+          instructors.push(instructor);
+          return instructors;
+      }
+  }
+}
+
+course1 = classRoom()
+course1.getInstructors() // ["Elie", "Colt"]
+course1.addInstructor("Ian") // ["Elie", "Colt","Ian"]
+course1.getInstructors() // ["Elie", "Colt", "Ian"]
+
+course2 = classRoom()
+course2.getInstructors() // ["Elie", "Colt"] - not affected by course1
+
+// we also have NO access to the instructors variable
+// which makes it private - no one can modify it...you're stuck with Colt and Elie
 ```
 
 
@@ -724,6 +930,140 @@ do {
      i++;  
 }  
 while (i < 10);  
+```
+
+
+## Keyword `this`
+
+### 1. Global Context
+
+When `this` is not inside of a declared object, it's a value that refers to a global object `Window`. Bad practice.
+
+### 2. Implicit/Object
+
+When `this` is inside of a declared object.
+
+```js
+var person = {
+    firstName: "Elie",
+    sayHi: function(){
+        return "Hi " + this.firstName
+    },
+    determineContext: function(){
+        return this === person
+    }
+}
+
+person.sayHi() // "Hi Elie"
+person.determineContext() // true
+```
+
+Nested objects:
+
+```js
+var person = {
+    firstName: "Colt",
+    sayHi: function(){
+        return "Hi " + this.firstName;
+    },
+    determineContext: function(){
+        return this === person;
+    },
+    dog: {
+        sayHello: function(){
+            return "Hello " + this.firstName;
+        },
+        determineContext: function(){
+            return this === person;
+        }        
+    }
+}
+
+person.sayHi() // "Hi Colt"
+person.determineContext() // true
+
+// but what is the value of the keyword this right now?
+person.dog.sayHello() // "Hello undefined"
+person.dog.determineContext() // false
+```
+
+### 3. Explicit
+
+`call()`, `apply()` and `bind()` are used to explicitly set the value of `this`.
+
+```js
+What about Apply?
+var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+        return "Hi " + this.firstName 
+    },
+    addNumbers: function(a,b,c,d){
+        return this.firstName + " just calculated " + (a+b+c+d);
+    }
+}
+
+var elie = {
+    firstName: "Elie"
+}
+
+colt.sayHi() // Hi Colt
+colt.sayHi.call(elie) // Hi Elie
+colt.sayHi.apply(elie) // Hi Elie
+colt.addNumbers(1,2,3,4) // Colt just calculated 10
+colt.addNumbers.call(elie,1,2,3,4) // Elie just calculated 10
+colt.addNumbers.apply(elie,[1,2,3,4]) // Elie just calculated 10
+
+// The bind() parameters work like call, but bind() returns a function with the context of 'this' bound already
+var elieCalc = colt.addNumbers.bind(elie,1,2,3,4) // function(){}...
+elieCalc() // Elie just calculated 10
+// With bind - we do not need to know all the arguments up front
+var elieCalc = colt.addNumbers.bind(elie,1,2) // function(){}... 
+elieCalc(3,4) // Elie just calculated 10
+```
+
+Very commonly we lose the context of `this`, but in functions that we do not want to execute right away.  
+Use bind to set the correct context of 'this':
+
+```js
+var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+        setTimeout(function(){
+            console.log("Hi " + this.firstName)
+        },1000)
+    }
+}
+
+colt.sayHi() // Hi undefined (1000 milliseconds later)
+
+var colt = {
+    firstName: "Colt",
+    sayHi: function(){
+        setTimeout(function(){
+            console.log("Hi " + this.firstName)
+        }.bind(this),1000)
+    }
+}
+
+colt.sayHi() // Hi Colt (1000 milliseconds later)
+```
+
+### 3. The `new` keyword
+
+We can set the context of the keyword `this` using the `new` keyword
+
+```js
+function Person(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+var elie = new Person("Elie", "Schoppik");
+
+elie.firstName // "Elie"
+elie.lastName // "Schoppik"
+
 ```
 
 
