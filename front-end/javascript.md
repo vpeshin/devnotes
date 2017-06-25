@@ -34,6 +34,7 @@ Scripts can also be placed in external files.
 <script src="myScript.js"></script>
 ```
 
+
 ## JavaScript Output
 
 [[W3Schools](http://www.w3schools.com/js/js_output.asp)]
@@ -567,6 +568,21 @@ var colors = ["red", "orange", "yellow", "green", "blue", "PURPLE"];
 colors.myForEach(function(color){
 	console.log(color);
 });
+```
+
+First class functions:
+
+```js
+function add(first, second, callback) {
+  console.log(first + second);
+  callback();
+}
+
+add(4, 5, function() {
+  console.log('done');
+});
+// 9
+// done
 ```
 
 

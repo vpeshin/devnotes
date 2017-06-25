@@ -2,10 +2,11 @@
 
 1. [Overview](#overview)
 2. [Node.js and Node Package Manager](#nodejs-and-node-package-manager)
-3. [Grunt](#grunt)
+3. [[ESLint](http://eslint.org/docs/user-guide/command-line-interface)](#eslinthttpeslintorgdocsuser-guidecommand-line-interface)
 4. [Less and Sass](#less-and-sass)
-5. [Bower](#bower)
-6. [Other Useful Tools](#other-useful-tools)
+5. [Grunt](#grunt)
+6. [Bower](#bower)
+7. [Other Useful Tools](#other-useful-tools)
 
 <!-- /TOC -->
 
@@ -14,9 +15,10 @@
 [Node, Grunt, Bower and Yeoman - A Modern web dev's Toolkit](http://juristr.com/blog/2014/08/node-grunt-yeoman-bower)
 
 Tools for automation in web development:
-- **Bower**: Package Manager for the Web
-- **Grunt** and **Gulp**: Task Automation
-- **Yo**: Web App Scaffolding
+- **webpack**: Module bundler
+- **Bower**: Package manager for the web
+- **Grunt** and **Gulp**: Task automation
+- **Yo**: Web app scaffolding
 - **Yeoman**: Workflow designed around using Yo, Bower and Grunt
 
 
@@ -48,6 +50,17 @@ Tools for automation in web development:
 `> npm run lint`
 
 
+## [ESLint](http://eslint.org/docs/user-guide/command-line-interface)
+
+[ESLint and React](http://www.zsoltnagy.eu/use-eslint-like-a-pro-with-es6-and-react/)
+
+
+## Less and Sass
+
+`> npm install -g less`  
+`> lessc mystyles.less > mystyles.css`
+
+
 ## Grunt
 
 Grunt is useful when you are automating multiple tasks that are done repeatedly.
@@ -75,15 +88,6 @@ Grunt is useful when you are automating multiple tasks that are done repeatedly.
 4. Install Grunt and gruntplugins locally:  
 `> npm install grunt --save-dev`  
 `> npm install grunt-contrib-jshint --save-dev`
-
-
-## Less and Sass
-
-Install less:  
-`> npm install -g less`
-
-Compile the Less file into a CSS file:  
-`> lessc mystyles.less > mystyles.css`
 
 
 ## Bower

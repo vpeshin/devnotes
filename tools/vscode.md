@@ -4,6 +4,7 @@
 2. [Tasks](#tasks)
 3. [Git](#git)
 4. [Bootstrap code completion](#bootstrap-code-completion)
+5. [Keyboard Shortcuts](#keyboard-shortcuts)
 
 <!-- /TOC -->
 
@@ -121,3 +122,107 @@ Remote style sheets can be specified in VS Code settings:
   "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
 ]
 ```
+
+
+## Keyboard Shortcuts
+
+Basic Editing    |                |
+-----------------|----------------
+Ctrl+Shift+K     |Delete Line
+Alt+Down         |Move Line Down
+Shift+Alt+Down   |Copy Line Down
+Ctrl+D           |Select Word / Add Selection To Next Find Match
+Ctrl+F2          |Select all occurrences of current word
+Ctrl+Shift+L     |Select all occurrences of current selection
+Ctrl+I           |Select Line
+Ctrl+W			     |Expand Selection
+Ctrl+Shift+W	   |Shrink Selection
+Ctrl+U           |Undo last cursor operation
+Ctrl+Alt+Down    |Insert Cursor Below (Multiple Cursors)
+Alt+LMB          |Insert Cursor
+Ctrl+Shift+\     |Jump to matching bracket
+Ctrl+]           |Indent Line
+Ctrl+/           |Toggle Line Comment
+Ctrl+Shift+/     |Toggle Block Comment [edited Shift+Alt+A]
+Shift+Alt+LMB	   |Column Selection
+Alt+W            |htmltagwrap
+
+
+Rich Languages Editing||
+------------------|----------------
+Shift+Alt+F       |Format Document
+Ctrl+K Ctrl+F	    |Format Selection
+F12               |Go to Definition
+Alt+F12           |Peek Definition
+Ctrl+.            |Quick Fix
+Shift+F12         |Show References
+F2                |Rename Symbol
+Ctrl+Shift+.      |Replace with Next Value
+Ctrl+Shift+,      |Replace with Previous Value
+Ctrl+Shift+[	    |Folds the innermost uncollapsed region at the cursor
+Ctrl+Shift+]	    |Unfolds the collapsed region at the cursor
+Ctrl+K Ctrl+0	    |Folds all regions in the editor
+Ctrl+K Ctrl+J     |Unfolds all regions in the editor
+Ctrl+K Ctrl+2 	  |Folds all regions of level 2, except the region at the current cursor position
+
+Navigation||
+------------------|----------------
+Ctrl+T            |Show All Symbols
+Ctrl+G            |Go to Line...
+Ctrl+P            |Go to File...
+Ctrl+Shift+O      |Go to Symbol...
+Ctrl+Shift+M      |Show Errors and Warnings
+F8                |Go to Next Error or Warning
+Shift+F8          |Go to Previous Error or Warning
+Ctrl+Shift+P      |Show All Commands
+Ctrl+Tab          |Navigate History
+Alt+Left          |Go Back
+Alt+Right         |Go Forward
+
+Editor/Window Management||
+------------------|----------------
+Ctrl+\            |Split Editor
+Ctrl+`            |Cycle Between Opened Editors
+Ctrl+1            |Focus into Left Hand Editor
+Ctrl+Alt+Right    |Focus into Next Editor on the Right
+
+Display||
+------------------|----------------
+F11               |Toggle Full Screen
+Ctrl+K Z          |Zen Mode
+Ctrl+B            |Toggle Sidebar Visibility
+Ctrl+Shift+D      |Show Debug
+Ctrl+Shift+E      |Show Explorer
+Ctrl+Shift+F      |Show Search
+Ctrl+Shift+J      |Toggle Search Details
+Ctrl+Shift+C      |Open New Command Prompt
+Ctrl+Shift+U      |Show Output
+Ctrl+Shift+M      |Show Problems
+Ctrl+Shift+V      |Toggle Markdown Preview
+
+Debug||
+------------------|----------------
+F9                |Toggle Breakpoint
+F5                |Continue / Pause
+F11               |Step Into
+Shift+F11         |Step Out
+F10               |Step Over
+Shift+F5          |Stop
+Ctrl+Shift+F5	    |Restart
+Ctrl+F5			      |Run Mode
+
+Tasks||
+------------------|----------------
+Ctrl+Shift+B      |Run Build Task
+Ctrl+Shift+T      |Run Test Task
+
+Preview||
+------------------|----------------
+Ctrl+Shift+V	    |Toggle Preview
+Ctrl+K V		      |Open/Close Preview to the Side
+
+Colonize Plugin||
+------------------|----------------
+Shift+Enter       |Insert semicolon at the end of line
+Ctrl+Enter        |Insert semicolon at the end of line and continue on the new line (remapped)
+Alt+Enter         |Continue on the new line (standard remapped)

@@ -10,7 +10,8 @@
 [Javascript](front-end/javascript.md)  
 [jQuery](front-end/jquery.md)  
 [Bootstrap](front-end/bootstrap.md)  
-[AngularJS](front-end/angularjs.md)
+[Angular 4](front-end/angular_4.md)
+[React](front-end/react.md)
 
 
 ## Back-End Development
@@ -21,7 +22,7 @@
 ## Web Development Tools
 
 [MarkDown (CommonMark)](tools/markdown.md)  
-[Web Tools](tools/web_tools.md): Node.js and npm, Less and Sass, Bower
+[Web Tools](tools/web_tools.md): Node.js and npm, Less and Sass, Bower  
 [Visual Studio Code](tools/vscode.md)  
 
 
