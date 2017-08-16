@@ -8,10 +8,12 @@
 [HTML](front-end/html.md)  
 [CSS](front-end/css.md)  
 [Javascript](front-end/javascript.md)  
+[TypeScript](front-end/typescript.md)
 [jQuery](front-end/jquery.md)  
 [Bootstrap](front-end/bootstrap.md)  
 [Angular 4](front-end/angular_4.md)
 [React](front-end/react.md)
+[Vue.js](front-end/vue.md)
 
 
 ## Back-End Development

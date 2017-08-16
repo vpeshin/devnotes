@@ -1,32 +1,29 @@
 <!-- TOC depthTo:2 orderedList:true -->
 
-1. [IntelliSense for Node.js modules](#intellisense-for-nodejs-modules)
+1. [IntelliSense for jQuery](#intellisense-for-jquery)
 2. [Tasks](#tasks)
 3. [Git](#git)
 4. [Bootstrap code completion](#bootstrap-code-completion)
-5. [Keyboard Shortcuts](#keyboard-shortcuts)
+5. [Sass and Gulp](#sass-and-gulp)
+6. [Keyboard Shortcuts](#keyboard-shortcuts)
 
 <!-- /TOC -->
 
-## IntelliSense for Node.js modules
+## IntelliSense for jQuery
 
-1. [Optional?] Create `jsconfig.json` file at the root of your JavaScript project:
+If you use `npm` and have a `package.json` in your project and jQuery is listed there, it should already work.
 
-``` json
+If you do not use `npm`, you can create the file `jsconfig.json` in the project root:
+
+```json
 {
-    "compilerOptions": {
-        "target": "ES6"
-    },
-    "exclude": [
-        "node_modules"
+  "typeAcquisition": {
+    "include": [
+      "jquery"
     ]
+  }
 }
 ```
-
-2. `npm install typings -g`
-3. `typings search jquery` or `typings search --name jquery`
-4. `typings install dt~jquery -Sg`  
-`typings install dt~express -Sg`
 
 
 ## Tasks
@@ -124,6 +121,64 @@ Remote style sheets can be specified in VS Code settings:
 ```
 
 
+## Sass and Gulp
+
+1. `npm install -g node-sass gulp`  
+`npm install gulp gulp-sass`
+
+2. F1 -> Configure Task Runner -> Others. `tasks.json` (Gulp version):
+
+```json
+{
+    "version": "0.1.0",
+    "command": "gulp",
+    "isShellCommand": true,
+    "echoCommand": true,
+    "tasks": [{
+        "taskName": "sass",
+        "suppressTaskName": true,
+        "args": [
+            "default"
+        ],
+        "isBuildCommand": true,
+        "showOutput": "always",
+        "isBackground": true
+    }]
+}
+```
+
+`tasks.json` (without Gulp):
+
+```json
+{
+  "version": "0.1.0",
+  "command": "node-sass",
+  "isShellCommand": true,
+  "args": ["sass\\styles.scss", "css\\styles.css"]
+}
+```
+
+3. Create `gulpfile.js` at the project's root:
+
+```js
+// Sass configuration
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+
+gulp.task('sass', function() {
+    gulp.src('sass/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('css'));
+});
+
+gulp.task('default', ['sass'], function() {
+    gulp.watch('sass/*.scss', ['sass']);
+})
+```
+
+4. Ctrl+Shift+B
+
+
 ## Keyboard Shortcuts
 
 Basic Editing    |                |
@@ -145,7 +200,7 @@ Ctrl+]           |Indent Line
 Ctrl+/           |Toggle Line Comment
 Ctrl+Shift+/     |Toggle Block Comment [edited Shift+Alt+A]
 Shift+Alt+LMB	   |Column Selection
-Alt+W            |htmltagwrap
+Alt+W            |Wrap selection with Abbreviation (Emmet)
 
 
 Rich Languages Editing||
@@ -226,3 +281,7 @@ Colonize Plugin||
 Shift+Enter       |Insert semicolon at the end of line
 Ctrl+Enter        |Insert semicolon at the end of line and continue on the new line (remapped)
 Alt+Enter         |Continue on the new line (standard remapped)
+
+Document This Plugin||
+------------------|----------------
+Ctrl+Alt+D (x2)   |Generate Documentation
