@@ -4,7 +4,7 @@
 2. [Tasks](#tasks)
 3. [Git](#git)
 4. [Bootstrap code completion](#bootstrap-code-completion)
-5. [Sass and Gulp](#sass-and-gulp)
+5. [Sass](#sass)
 6. [Keyboard Shortcuts](#keyboard-shortcuts)
 
 <!-- /TOC -->
@@ -121,12 +121,65 @@ Remote style sheets can be specified in VS Code settings:
 ```
 
 
-## Sass and Gulp
+## Sass
 
-1. `npm install -g node-sass gulp`  
-`npm install gulp gulp-sass`
+### Sass and npm Scripts
 
-2. F1 -> Configure Task Runner -> Others. `tasks.json` (Gulp version):
+1. `npm install -D node-sass postcss-cli autoprefixer`
+
+2. package.json:
+
+```json
+{
+  ...
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o css scss",
+    "autoprefixer": "postcss css/**/*.css -u autoprefixer -r css/**/*.css",
+    "build:css": "npm run scss && npm run autoprefixer"
+  }
+  ...
+}
+```
+
+3. To run single task:  
+F1 -> Tasks: Run Task  
+or
+`npm run scss`
+
+To run combined tasks:  
+Ctrl+Chift+B  
+or
+`npm run build:css`
+
+### Sass and VSCode Tasks
+
+1. `npm install -g node-sass`
+
+2. F1 -> Configure Task Runner -> Others. `tasks.json`:
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "Sass Compile",
+      "type": "shell",
+      "command": "node-sass -o css scss",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
+```
+
+3. Ctrl+Shift+B 
+
+### Sass and Gulp
+
+1. `npm install -g gulp`  
+`npm install gulp gulp-sass gulp-autoprefixer`
+
+2. F1 -> Configure Task Runner -> Others. `tasks.json`:
 
 ```json
 {
@@ -147,33 +200,25 @@ Remote style sheets can be specified in VS Code settings:
 }
 ```
 
-`tasks.json` (without Gulp):
-
-```json
-{
-  "version": "0.1.0",
-  "command": "node-sass",
-  "isShellCommand": true,
-  "args": ["sass\\styles.scss", "css\\styles.css"]
-}
-```
-
 3. Create `gulpfile.js` at the project's root:
 
 ```js
 // Sass configuration
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('sass', function() {
-    gulp.src('sass/*.scss')
+gulp.task('default', function() {
+    gulp.src('sass/**/*.scss')
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(sass())
+        .pipe(autoprefixer())        
         .pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['sass'], function() {
-    gulp.watch('sass/*.scss', ['sass']);
-})
+// gulp.task('default', ['sass'], function() {
+//   gulp.watch('sass/*.scss', ['sass']);
+// });
 ```
 
 4. Ctrl+Shift+B
@@ -219,6 +264,7 @@ Ctrl+Shift+]	    |Unfolds the collapsed region at the cursor
 Ctrl+K Ctrl+0	    |Folds all regions in the editor
 Ctrl+K Ctrl+J     |Unfolds all regions in the editor
 Ctrl+K Ctrl+2 	  |Folds all regions of level 2, except the region at the current cursor position
+Ctrl+Alt+D Ctrl+Alt+D |Document This (js and ts)
 
 Navigation||
 ------------------|----------------
@@ -270,6 +316,7 @@ Tasks||
 ------------------|----------------
 Ctrl+Shift+B      |Run Build Task
 Ctrl+Shift+T      |Run Test Task
+Ctrl+Shift+R      |Run Task (remapped)
 
 Preview||
 ------------------|----------------
