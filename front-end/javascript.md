@@ -1,21 +1,57 @@
-<!-- TOC depthTo:2 orderedList:true -->
+<!-- TOC depthTo:3 orderedList:true -->
 
 1. [Data Types](#data-types)
 2. [Arrays](#arrays)
+  1. [Array Iteration](#array-iteration)
+  2. [Array Methods](#array-methods)
 3. [[Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)](#stringshttpsdevelopermozillaorgen-usdocswebjavascriptreferenceglobal_objectsstring)
 4. [[Numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)](#numbershttpsdevelopermozillaorgen-usdocswebjavascriptreferenceglobal_objectsnumber)
+  1. [Number Methods](#number-methods)
 5. [[Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)](#mathhttpsdevelopermozillaorgen-usdocswebjavascriptreferenceglobal_objectsmath)
+  1. [Math Constants](#math-constants)
 6. [[Dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)](#dateshttpsdevelopermozillaorgen-usdocswebjavascriptreferenceglobal_objectsdate)
 7. [[Booleans](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)](#booleanshttpsdevelopermozillaorgen-usdocswebjavascriptreferenceglobal_objectsboolean)
 8. [Conditional Statements](#conditional-statements)
 9. [[Loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)](#loopshttpsdevelopermozillaorgen-usdocswebjavascriptguideloops_and_iteration)
 10. [[Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)]](#functionshttpsdevelopermozillaorgen-usdocswebjavascriptguidefunctions)
+  1. [First Class Functions: Passing Functions as arguments](#first-class-functions-passing-functions-as-arguments)
+  2. [First Class Functions: Functions Returning Functions](#first-class-functions-functions-returning-functions)
+  3. [Immediately Invoked Function Expressions (IIFE)](#immediately-invoked-function-expressions-iife)
 11. [OOP in JavaScript](#oop-in-javascript)
+  1. [Objects](#objects)
+  2. [Classes. Bind, Call and Apply](#classes-bind-call-and-apply)
+  3. [Inheritance, Prototypes, Function Constructors](#inheritance-prototypes-function-constructors)
+  4. [Object.create](#objectcreate)
+  5. [Closures](#closures)
 12. [[Scope](https://scotch.io/tutorials/understanding-scope-in-javascript)](#scopehttpsscotchiotutorialsunderstanding-scope-in-javascript)
 13. [Keyword `this`](#keyword-this)
+  1. [1. Global Context](#1-global-context)
+  2. [2. Implicit/Object](#2-implicitobject)
+  3. [3. Explicit](#3-explicit)
+  4. [3. The `new` keyword](#3-the-new-keyword)
 14. [The DOM (Document Object Model)](#the-dom-document-object-model)
+  1. [Node Relationships](#node-relationships)
+  2. [Select and Manipulate Nodes](#select-and-manipulate-nodes)
+  3. [Manipulating Style:](#manipulating-style)
+  4. [Manipulating Text](#manipulating-text)
+  5. [Manipulating Attributes](#manipulating-attributes)
+  6. [Creating and Adding Nodes](#creating-and-adding-nodes)
+  7. [Deleting Nodes](#deleting-nodes)
+  8. [Cloning Nodes](#cloning-nodes)
 15. [[Events](https://developer.mozilla.org/en-US/docs/Web/Events)](#eventshttpsdevelopermozillaorgen-usdocswebevents)
+  1. [Event Bubbling and Event Delegation](#event-bubbling-and-event-delegation)
 16. [ES6/ES2105](#es6es2105)
+  1. [Variable Declarations with `let` and `const`](#variable-declarations-with-let-and-const)
+  2. [Strings](#strings)
+  3. [Arrow Functions](#arrow-functions)
+  4. [Destructuring](#destructuring)
+  5. [Arrays](#arrays-1)
+  6. [The Spread Operator](#the-spread-operator)
+  7. [Function Rest Parameters](#function-rest-parameters)
+  8. [Function Default Parameters](#function-default-parameters)
+  9. [Maps](#maps)
+  10. [Classes](#classes)
+  11. [Classes with Subclasses (Inheritance)](#classes-with-subclasses-inheritance)
 17. [Useful Resources](#useful-resources)
 
 <!-- /TOC -->
@@ -127,6 +163,20 @@ function isBigEnough(value) {
 
 var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
 // filtered is [12, 130, 44]
+```
+
+- [reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value:
+
+```js
+// ES5
+const total = [0, 1, 2, 3].reduce(function(sum, value) {
+  return sum + value;
+}, 1);
+// total is 7
+
+// ES6 version
+const total = [0, 1, 2, 3].reduce((sum, value) => sum + value, 1);
+// total is 7
 ```
 
 
@@ -868,7 +918,13 @@ function change_color4(){
 
 ```js
 var boxes = document.querySelectorAll('.box');
+
 var boxesArr5 = Array.prototype.slice.call(boxes);
+var boxesArr5 = [].prototype.slice.call(boxes);
+// ES6
+var boxesArr6 = Array.from(boxes);
+var boxesArr6 = [...boxes];
+
 ```
 
 
@@ -1438,6 +1494,232 @@ const boxes = document.querySelectorAll('.box');
 const all = [h, ...boxes];
 
 Array.from(all).forEach(cur => cur.style.color = 'purple');
+```
+
+### Function Rest Parameters
+
+*Rest parameters* allow us to pass an arbitrary number of arguments into a function.
+
+The *spread operator* is used in the function call while the *rest parameters* is used in the function declaration.
+
+```js
+// ES5
+function isFullAge5() {
+  console.log(arguments); // array-like structure, but not an array
+  // transform to an array
+  var argsArray = Array.prototype.slice(arguments);
+
+  argsArray.forEach(function (cur) {
+    console.log((2016 - cur) >= 18);
+  });
+}
+
+isFullAge5(1990, 1999, 1965); // -> true false true
+
+// ES6
+function isFullAge6(...years) {
+  console.log(years); // array!
+  years.forEach(cur => console.log((2016 - cur) >= 18));
+};
+
+isFullAge6(1990, 1999, 1965); // -> true false true
+```
+
+```js
+// ES5
+function isFullAge5(limit) {
+  var argsArray = Array.prototype.slice(arguments, 1); // start cutting at index 1 so we can exclude the first argument ('limit')
+
+  argsArray.forEach(function (cur) {
+    console.log((2016 - cur) >= limit);
+  });
+}
+
+isFullAge5(16, 1990, 1999, 1965); // -> true true true
+
+// ES6
+function isFullAge6(limit, ...years) {
+  console.log(years); // array!
+  years.forEach(cur => console.log((limit - cur) >= 18));
+};
+
+isFullAge6(16, 1990, 1999, 1965); // -> true true true
+```
+
+### Function Default Parameters
+
+```js
+// ES5
+function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+
+  lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+  nationality === undefined ? nationality = 'american' : nationality = nationality;
+
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.yearOfBirth = yearOfBirth;
+  this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', 1990); // 'lastName' and 'nationality' are 'Smith' and 'american' by default
+
+// ES6
+function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'american') {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.yearOfBirth = yearOfBirth;
+  this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', 1990); // 'lastName' and 'nationality' are 'Smith' and 'american' by default
+```
+
+### Maps
+
+A *map* is a new data structure in ES6.  
+In objects we are limited to strings, but in maps we can use anything for the keys.  
+The maps are iterable.
+
+```js
+const question = new Map();
+question.set('question', 'What is the official name of the latest major JavaScript version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Wrong, please try again');
+
+console.log(question.get('question')); // -> 'What is ...'
+console.log(question.size); // -> 8
+
+if (question.has(4)) {
+  question.delete(4);
+}
+
+question.forEach((value, key) => console.log(`This is ${key} and it's set to ${value}`));
+
+for (let [key, value] of question.entries()) {
+  // print only numbered answer options
+  if (typeof(key) === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+const ans = parseInt(prompt('Write the correct answer'));
+
+console.log(question.get(ans === question.get('correct')));
+
+question.clear();
+```
+
+### Classes
+
+Classes are syntatic sugar in ES6
+
+```js
+// ES5
+var Person5 = function (name, yearOfBirth, job) {
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+}
+
+Person5.prototype.calculateAge = function () {
+  var age = new Date().getFullYear() - yearOfBirth;
+  console.log(age);
+}
+
+var john5 = new Person5('John', 1990, 'teacher');
+
+
+// ES6
+class Person6 {
+  constructor(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+  }
+
+  calculateAge() {
+    var age = new Date().getFullYear() - yearOfBirth;
+    console.log(age);
+  }
+
+  // Static class
+  static greeting() {
+    console.log('Hey there!');
+  }
+}
+
+const john6 = new Person6('John', 1990, 'teacher');
+Person6.greeting();
+```
+
+### Classes with Subclasses (Inheritance)
+
+```js
+// ES5
+var Person5 = function (name, yearOfBirth, job) {
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+}
+
+Person5.prototype.calculateAge = function () {
+  var age = new Date().getFullYear() - yearOfBirth;
+  console.log(age);
+}
+
+var Athlete5 = function (name, yearOfBirth, job, olympicGames, medals) {
+  Person5.call(this, name, yearOfBirth, job);
+  this.olympicGames = olympicGames;
+  this.medals = medals;
+}
+
+Athlete5.prototype = Object.create(Person5.prototype);
+
+Athlete5.prototype.wonMedal = function () {
+  this.medals++;
+  console.log(this.medals);
+}
+
+var johnAthlete5 = new Athlete5('John', 1990, 'swimmer', 3, 10);
+johnAthlete5.calculateAge();
+johnAthlete5.wonMedal();
+
+
+// ES6
+class Person6 {
+  constructor(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+  }
+
+  calculateAge() {
+    var age = new Date().getFullYear() - yearOfBirth;
+    console.log(age);
+  }
+}
+
+class Athlete6 extends Person6 {
+  constructor(name, yearOfBirth, job, olympicGames, medals) {
+    super(name, yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+  }
+
+  wonMedal() {
+    this.medals++;
+    console.log(medals);
+  }
+}
+
+const johnAthlete6 = new Athlete6('John', 1990, 'swimmer', 3, 10);
+johnAthlete6.wonMedal();
+johnAthlete6.calculateAge();
 ```
 
 
