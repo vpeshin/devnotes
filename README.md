@@ -8,9 +8,12 @@
 [HTML](front-end/html.md)  
 [CSS](front-end/css.md)  
 [Javascript](front-end/javascript.md)  
+[TypeScript](front-end/typescript.md)
 [jQuery](front-end/jquery.md)  
 [Bootstrap](front-end/bootstrap.md)  
-[AngularJS](front-end/angularjs.md)
+[Angular 4](front-end/angular_4.md)
+[React](front-end/react.md)
+[Vue.js](front-end/vue.md)
 
 
 ## Back-End Development
@@ -21,10 +24,11 @@
 ## Web Development Tools
 
 [MarkDown (CommonMark)](tools/markdown.md)  
-[Web Tools](tools/web_tools.md): Node.js and npm, Less and Sass, Bower
+[Web Tools](tools/web_tools.md): Node.js and npm, Less and Sass, Bower  
 [Visual Studio Code](tools/vscode.md)  
 
 
 ## GameDev
 
+[GameMaker Studio](gamedev/gamemaker.md)  
 [Unity](gamedev/unity.md)

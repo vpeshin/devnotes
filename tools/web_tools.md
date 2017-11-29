@@ -2,10 +2,10 @@
 
 1. [Overview](#overview)
 2. [Node.js and Node Package Manager](#nodejs-and-node-package-manager)
-3. [Grunt](#grunt)
-4. [Less and Sass](#less-and-sass)
-5. [Bower](#bower)
-6. [Other Useful Tools](#other-useful-tools)
+3. [webpack](#webpack)
+4. [[ESLint](http://eslint.org/docs/user-guide/command-line-interface)](#eslinthttpeslintorgdocsuser-guidecommand-line-interface)
+5. [Other Useful Tools](#other-useful-tools)
+6. [Outdated](#outdated)
 
 <!-- /TOC -->
 
@@ -14,41 +14,64 @@
 [Node, Grunt, Bower and Yeoman - A Modern web dev's Toolkit](http://juristr.com/blog/2014/08/node-grunt-yeoman-bower)
 
 Tools for automation in web development:
-- **Bower**: Package Manager for the Web
-- **Grunt** and **Gulp**: Task Automation
-- **Yo**: Web App Scaffolding
+- **webpack**: Module bundler
+- **Bower**: Package manager for the web
+- **Grunt** and **Gulp**: Task automation
+- **Yo**: Web app scaffolding
 - **Yeoman**: Workflow designed around using Yo, Bower and Grunt
+
+Note: you can use npm scripts + webpack for all your webdev needs.
 
 
 ## Node.js and Node Package Manager
 
-1. Install [Node.js](https://nodejs.org) and check installation:  
+1. Install [Node.js](https://nodejs.org), put PATH variable ***C:\Program Files\nodejs\\*** above ***C:\Users\vpesh\AppData\Roaming\npm*** and check installation:  
 `> node -v`  
 `> npm -v`
 
-2. `package.json` example:
+2. `npm install -D node-sass postcss-cli autoprefixer`
 
-``` json
+3. package.json
+
+```json
 {
-  "name": "npm-scripts-example",
-  "version": "1.0.0",
-  "description": "An example of how to use npm scripts over a build tool like Grunt or Gulp",
-  "main": "index.js",
-  "author": "Keith Cirkel <npm@keithcirkel.co.uk> (http://keithcirkel.co.uk/)",
-  "license": "MIT",
-  "devDependencies": {
-  },
+  ...
   "scripts": {
-    "lint": "jshint **.js"
+    "scss": "node-sass --output-style compressed -o css scss",
+    "autoprefixer": "postcss css/**/*.css -u autoprefixer -r css/**/*.css",
+    "build:css": "npm run scss && npm run autoprefixer"
   }
+  ...
 }
 ```
 
-3. Run task:  
-`> npm run lint`
+4. To run single task: `npm run scss`  
+To run combined tasks: `npm run build:css`
 
 
-## Grunt
+## webpack
+
+
+
+## [ESLint](http://eslint.org/docs/user-guide/command-line-interface)
+
+[ESLint and React](http://www.zsoltnagy.eu/use-eslint-like-a-pro-with-es6-and-react/)
+
+
+## Other Useful Tools
+
+- [Postman](https://www.getpostman.com/): A powerful GUI platform to make your API development faster & easier
+- [Stackshare](https://stackshare.io/): Discover technology stacks and find the best software tools
+
+
+## Outdated
+
+### Less
+
+`> npm install -g less`  
+`> lessc mystyles.less > mystyles.css`
+
+### Grunt
 
 Grunt is useful when you are automating multiple tasks that are done repeatedly.
 
@@ -77,16 +100,7 @@ Grunt is useful when you are automating multiple tasks that are done repeatedly.
 `> npm install grunt-contrib-jshint --save-dev`
 
 
-## Less and Sass
-
-Install less:  
-`> npm install -g less`
-
-Compile the Less file into a CSS file:  
-`> lessc mystyles.less > mystyles.css`
-
-
-## Bower
+### Bower
 
 [Bower 101](https://medium.com/@ZaidHanania/bower-101-c0b57322df8#.yzfz1dmas)
 
@@ -155,9 +169,3 @@ The `-S` flag indicates that package should be saved as a dependency for our pro
 
 List globally installed packages:  
 `> npm ls -g --depth=0`
-
-
-## Other Useful Tools
-
-- [Postman](https://www.getpostman.com/): A powerful GUI platform to make your API development faster & easier
-- [Stackshare](https://stackshare.io/): Discover technology stacks and find the best software tools
