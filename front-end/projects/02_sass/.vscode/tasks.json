@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "command": "gulp",
+  "isShellCommand": true,
+  "echoCommand": true,
+  "tasks": [{
+      "taskName": "sass",
+      "suppressTaskName": true,
+      "args": [
+          "default"
+      ],
+      "isBuildCommand": true,
+      "showOutput": "always",
+      "isBackground": true
+  }]
+}
