@@ -50,8 +50,9 @@
   7. [Function Rest Parameters](#function-rest-parameters)
   8. [Function Default Parameters](#function-default-parameters)
   9. [Maps](#maps)
-  10. [Classes](#classes)
-  11. [Classes with Subclasses (Inheritance)](#classes-with-subclasses-inheritance)
+  10. [Exports and Imports (Modules)](#exports-and-imports-modules)
+  11. [Classes](#classes)
+  12. [Classes with Subclasses (Inheritance)](#classes-with-subclasses-inheritance)
 17. [Useful Resources](#useful-resources)
 
 <!-- /TOC -->
@@ -74,6 +75,31 @@ JavaScript has dynamic types. This means that the same variable can be used as d
 
 You can use the JavaScript `typeof` operator to find the type of a JavaScript variable.
 
+Only primitive types' variables are copied with assignment operator (`=`). Reference types (Objects, Arrays, ...) are copying pointers instead of values:
+
+```js
+var person = {
+  name: 'Max'
+};
+
+var secondPerson = person;
+console.log(secondPerson.name); // -> 'Max'
+
+person.name = 'Manu'
+console.log(secondPerson.name); // -> 'Manu'
+
+// Create a real copy (ES6 only)
+const person = {
+  name: 'Max'
+};
+
+const secondPerson = {
+  ...person
+};
+
+person.name = 'Manu'
+console.log(secondPerson.name); // -> 'Max'
+```
 
 ## Arrays
 
@@ -1203,17 +1229,6 @@ Use cases for event delegation:
 
 ### Variable Declarations with `let` and `const`
 
-```js
-// ES5
-var name5 = 'Jane Smith';
-var age5 = 23;
-name5 = 'Jane Miller';
-
-// ES6
-const name6 = 'Jane Smith'; // cannot be changed
-let age6 = 23;
-```
-
 Variables in ES6 are not *function-scoped* but *block-scoped*.
 
 ```js
@@ -1370,7 +1385,7 @@ new Person('Mike').myFriends6(friends);
 
 ### Destructuring
 
-*Destructuring* gives us convenient way to extract data from a data structure like an object or an array.
+*Destructuring* extracts array elements or object properties and store them in variables.
 
 ```js
 // ES5
@@ -1455,6 +1470,7 @@ console.log(fullAge.indexOf(true)); // -> 3
 console.log(ages[fullAge.indexOf(true)]); // -> 21
 
 // ES6
+console.log(ages.map(cur => cur >= 18)); // -> [ false, false, false, true, false, false ]
 console.log(ages.findIndex(cur => cur >= 18)); // -> 3
 console.log(ages.find(cur => cur >= 18)); // -> 21
 ```
@@ -1486,7 +1502,15 @@ const bigFamily = [...familySmith, 'Lily', ...familyMiller];
 console.log(bigFamily); // -> ['John', 'Jane', 'Mark', 'Lily', 'Mary', 'Bob', 'Ann']
 ```
 
-`...` also works on another structures like NodeLists
+```js
+const filter = (...args) => {
+  return args.filter(el => el === 1);
+}
+
+console.log(filter(1, 2, 3)); // -> [1]
+```
+
+`...` also works on another structures like NodeLists and Objects
 
 ```js
 const h = document.querySelector('h1');
@@ -1496,9 +1520,17 @@ const all = [h, ...boxes];
 Array.from(all).forEach(cur => cur.style.color = 'purple');
 ```
 
+```js
+oldObject = { ... };
+const newObject = {
+  ...oldObject,
+  newProp: 5
+};
+```
+
 ### Function Rest Parameters
 
-*Rest parameters* allow us to pass an arbitrary number of arguments into a function.
+*Rest parameters* allow us to merge a list of function arguments into an array.
 
 The *spread operator* is used in the function call while the *rest parameters* is used in the function declaration.
 
@@ -1614,6 +1646,27 @@ console.log(question.get(ans === question.get('correct')));
 question.clear();
 ```
 
+### Exports and Imports (Modules)
+
+```js
+// person.js
+const person = {
+  name: 'Max';
+}
+export default person; 
+
+// utility.js
+export const clean = () = {...}
+export const baseData = 10;
+
+// app.js
+import person from './person.js'
+import prs from './person.js' // name is up to you because 'person' is default and only export
+import { baseData } from './utility.js'
+import { clean } from './utility.js'
+import * as bundled from './utility.js' // using: bundled.baseData, bundled.clean
+```
+
 ### Classes
 
 Classes are syntatic sugar in ES6
@@ -1643,7 +1696,7 @@ class Person6 {
   }
 
   calculateAge() {
-    var age = new Date().getFullYear() - yearOfBirth;
+    let age = new Date().getFullYear() - yearOfBirth;
     console.log(age);
   }
 
