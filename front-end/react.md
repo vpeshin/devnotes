@@ -10,6 +10,7 @@
 
 `> npm i -g create-react-app`  
 `> create-react-app project_name`  
+`> cd project_name`  
 `> npm start`
 
 
@@ -32,7 +33,7 @@ const App = () => {
   );
 }
 ```
-<!---->
+
 ### Using Functional Components
 
 search_bar.js:

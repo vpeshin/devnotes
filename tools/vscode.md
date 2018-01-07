@@ -231,6 +231,7 @@ Basic Editing    |                |
 Ctrl+Shift+K     |Delete Line
 Alt+Down         |Move Line Down
 Shift+Alt+Down   |Copy Line Down
+Ctrl+Shift+J     |Join Lines
 Ctrl+D           |Select Word / Add Selection To Next Find Match
 Ctrl+F2          |Select all occurrences of current word
 Ctrl+Shift+L     |Select all occurrences of current selection
@@ -246,6 +247,7 @@ Ctrl+/           |Toggle Line Comment
 Ctrl+Shift+/     |Toggle Block Comment [edited Shift+Alt+A]
 Shift+Alt+LMB	   |Column Selection
 Alt+W            |Wrap selection with Abbreviation (Emmet)
+Ctrl+Q           |Quick Documentation
 
 
 Rich Languages Editing||
@@ -254,13 +256,15 @@ Shift+Alt+F       |Format Document
 Ctrl+K Ctrl+F	    |Format Selection
 F12               |Go to Definition
 Alt+F12           |Peek Definition
+Ctrl+F12          |Go to Implementation
+Alt+F12           |Peek Definition
 Ctrl+.            |Quick Fix
 Shift+F12         |Show References
 F2                |Rename Symbol
 Ctrl+Shift+.      |Replace with Next Value
 Ctrl+Shift+,      |Replace with Previous Value
-Ctrl+Shift+[	    |Folds the innermost uncollapsed region at the cursor
-Ctrl+Shift+]	    |Unfolds the collapsed region at the cursor
+Ctrl++      	    |Fold
+Ctrl+-	          |Unfold
 Ctrl+K Ctrl+0	    |Folds all regions in the editor
 Ctrl+K Ctrl+J     |Unfolds all regions in the editor
 Ctrl+K Ctrl+2 	  |Folds all regions of level 2, except the region at the current cursor position
@@ -268,10 +272,10 @@ Ctrl+Alt+D Ctrl+Alt+D |Document This (js and ts)
 
 Navigation||
 ------------------|----------------
-Ctrl+T            |Show All Symbols
 Ctrl+G            |Go to Line...
 Ctrl+P            |Go to File...
-Ctrl+Shift+O      |Go to Symbol...
+Ctrl+Shift+O      |Go to Symbol in File
+Ctrl+T            |Go to Symbol in Workspace
 Ctrl+Shift+M      |Show Errors and Warnings
 F8                |Go to Next Error or Warning
 Shift+F8          |Go to Previous Error or Warning
@@ -292,6 +296,7 @@ Display||
 F11               |Toggle Full Screen
 Ctrl+K Z          |Zen Mode
 Ctrl+B            |Toggle Sidebar Visibility
+Ctrl+J            |Toggle Panel
 Ctrl+Shift+D      |Show Debug
 Ctrl+Shift+E      |Show Explorer
 Ctrl+Shift+F      |Show Search
@@ -299,7 +304,8 @@ Ctrl+Shift+J      |Toggle Search Details
 Ctrl+Shift+C      |Open New Command Prompt
 Ctrl+Shift+U      |Show Output
 Ctrl+Shift+M      |Show Problems
-Ctrl+Shift+V      |Toggle Markdown Preview
+Ctrl+Shift+V	    |Open Markdown Preview
+Ctrl+K V		      |Open Markdown Preview to the Side
 
 Debug||
 ------------------|----------------
@@ -316,19 +322,10 @@ Tasks||
 ------------------|----------------
 Ctrl+Shift+B      |Run Build Task
 Ctrl+Shift+T      |Run Test Task
-Ctrl+Shift+R      |Run Task (remapped)
-
-Preview||
-------------------|----------------
-Ctrl+Shift+V	    |Toggle Preview
-Ctrl+K V		      |Open/Close Preview to the Side
+Ctrl+Shift+R      |Run Task
 
 Colonize Plugin||
 ------------------|----------------
 Shift+Enter       |Insert semicolon at the end of line
 Ctrl+Enter        |Insert semicolon at the end of line and continue on the new line (remapped)
 Alt+Enter         |Continue on the new line (standard remapped)
-
-Document This Plugin||
-------------------|----------------
-Ctrl+Alt+D (x2)   |Generate Documentation

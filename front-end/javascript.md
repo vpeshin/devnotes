@@ -1396,14 +1396,31 @@ var age = john[1];
 // ES6
 const [name, age] = ['John', 26];
 
-const obj = {
+
+const user = {
   firstName = 'John',
   lastName = 'Smith'
 };
 
-const { firstName, lastName } = obj;
-const { firstName: a, lastName: b } = obj;
+// ES5
+var firstName = user.firstName;
+var lastName = user.lastName;
+
+// ES6
+const {
+  firstName,
+  lastName
+} = user;
+
+const { firstName: a, lastName: b } = user;
 console.log(a); // -> 'John'
+
+const users = ['Robin', 'Andrew', 'Dan'];
+const [
+  userOne,
+  userTwo,
+  userThree
+] = users;
 
 
 function calcAgeRetirement(year) {
